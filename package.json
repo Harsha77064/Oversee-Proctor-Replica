@@ -1,0 +1,31 @@
+{
+  "name": "oversee",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c magenta,cyan \"python -m server --reload\" \"vite\"",
+    "dev:lan": "concurrently -k -n api,web -c magenta,cyan \"python -m server --reload\" \"cross-env OVERSEE_HTTPS=1 vite --host\"",
+    "build": "vite build",
+    "start": "python -m server",
+    "cli": "python -m server.cli",
+    "test": "python -m server.testing"
+  },
+  "dependencies": {
+    "lucide-react": "^0.460.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "recharts": "^2.13.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3",
+    "vite": "^5.4.11"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,3262 @@
+{
+ "candidates": [
+  {
+   "id": "CND-1001",
+   "name": "Aarav Sharma",
+   "email": "aarav.sharma@example.com",
+   "department": "Engineering",
+   "status": "Active",
+   "online": true,
+   "warnings": 4,
+   "cheatingFlags": 1,
+   "assignedExams": [
+    "EX-201",
+    "EX-202",
+    "EX-203",
+    "EX-206",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-24T00:34:00.000Z"
+  },
+  {
+   "id": "CND-1002",
+   "name": "Priya Nair",
+   "email": "priya.nair@example.com",
+   "department": "QA",
+   "status": "Inactive",
+   "online": false,
+   "warnings": 3,
+   "cheatingFlags": 1,
+   "assignedExams": [
+    "EX-202",
+    "EX-204",
+    "EX-206"
+   ],
+   "lastActive": "2026-11-24T04:51:00.000Z"
+  },
+  {
+   "id": "CND-1003",
+   "name": "Rahul Verma",
+   "email": "rahul.verma@example.com",
+   "department": "Data Science",
+   "status": "Inactive",
+   "online": false,
+   "warnings": 3,
+   "cheatingFlags": 1,
+   "assignedExams": [
+    "EX-201",
+    "EX-204",
+    "EX-205",
+    "EX-208",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-23T22:07:00.000Z"
+  },
+  {
+   "id": "CND-1004",
+   "name": "Sneha Reddy",
+   "email": "sneha.reddy@example.com",
+   "department": "Product",
+   "status": "Active",
+   "online": true,
+   "warnings": 0,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-202",
+    "EX-203",
+    "EX-204",
+    "EX-205",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-22T19:14:00.000Z"
+  },
+  {
+   "id": "CND-1005",
+   "name": "Vikram Singh",
+   "email": "vikram.singh@example.com",
+   "department": "DevOps",
+   "status": "Active",
+   "online": true,
+   "warnings": 4,
+   "cheatingFlags": 2,
+   "assignedExams": [
+    "EX-201",
+    "EX-203",
+    "EX-205",
+    "EX-208"
+   ],
+   "lastActive": "2026-11-24T03:42:00.000Z"
+  },
+  {
+   "id": "CND-1006",
+   "name": "Ananya Iyer",
+   "email": "ananya.iyer@example.com",
+   "department": "HR",
+   "status": "Inactive",
+   "online": false,
+   "warnings": 3,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-201",
+    "EX-204",
+    "EX-207",
+    "EX-208",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-23T22:47:00.000Z"
+  },
+  {
+   "id": "CND-1007",
+   "name": "Karthik Rao",
+   "email": "karthik.rao@example.com",
+   "department": "Engineering",
+   "status": "Active",
+   "online": false,
+   "warnings": 0,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-203",
+    "EX-206",
+    "EX-208",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-22T14:03:00.000Z"
+  },
+  {
+   "id": "CND-1008",
+   "name": "Meera Pillai",
+   "email": "meera.pillai@example.com",
+   "department": "QA",
+   "status": "Inactive",
+   "online": false,
+   "warnings": 4,
+   "cheatingFlags": 2,
+   "assignedExams": [
+    "EX-202",
+    "EX-204"
+   ],
+   "lastActive": "2026-11-23T17:28:00.000Z"
+  },
+  {
+   "id": "CND-1009",
+   "name": "Arjun Mehta",
+   "email": "arjun.mehta@example.com",
+   "department": "Data Science",
+   "status": "Active",
+   "online": true,
+   "warnings": 0,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-201",
+    "EX-202",
+    "EX-206",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-23T03:14:00.000Z"
+  },
+  {
+   "id": "CND-1010",
+   "name": "Divya Menon",
+   "email": "divya.menon@example.com",
+   "department": "Product",
+   "status": "Active",
+   "online": true,
+   "warnings": 0,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-202",
+    "EX-204",
+    "EX-205",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-24T02:25:00.000Z"
+  },
+  {
+   "id": "CND-1011",
+   "name": "Rohan Gupta",
+   "email": "rohan.gupta@example.com",
+   "department": "DevOps",
+   "status": "Active",
+   "online": true,
+   "warnings": 0,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-202",
+    "EX-204",
+    "EX-206",
+    "EX-207",
+    "EX-208",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-24T06:53:00.000Z"
+  },
+  {
+   "id": "CND-1012",
+   "name": "Kavya Joshi",
+   "email": "kavya.joshi@example.com",
+   "department": "HR",
+   "status": "Inactive",
+   "online": false,
+   "warnings": 1,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-202",
+    "EX-203",
+    "EX-204"
+   ],
+   "lastActive": "2026-11-22T10:19:00.000Z"
+  },
+  {
+   "id": "CND-1013",
+   "name": "Siddharth Das",
+   "email": "siddharth.das@example.com",
+   "department": "Engineering",
+   "status": "Active",
+   "online": true,
+   "warnings": 1,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-201",
+    "EX-205"
+   ],
+   "lastActive": "2026-11-22T10:13:00.000Z"
+  },
+  {
+   "id": "CND-1014",
+   "name": "Ishita Bose",
+   "email": "ishita.bose@example.com",
+   "department": "QA",
+   "status": "Active",
+   "online": true,
+   "warnings": 2,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-203"
+   ],
+   "lastActive": "2026-11-22T22:08:00.000Z"
+  },
+  {
+   "id": "CND-1015",
+   "name": "Aditya Kulkarni",
+   "email": "aditya.kulkarni@example.com",
+   "department": "Data Science",
+   "status": "Active",
+   "online": true,
+   "warnings": 5,
+   "cheatingFlags": 1,
+   "assignedExams": [
+    "EX-201",
+    "EX-205",
+    "EX-206",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-24T03:34:00.000Z"
+  },
+  {
+   "id": "CND-1016",
+   "name": "Pooja Patel",
+   "email": "pooja.patel@example.com",
+   "department": "Product",
+   "status": "Active",
+   "online": true,
+   "warnings": 0,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-205",
+    "EX-207"
+   ],
+   "lastActive": "2026-11-23T09:40:00.000Z"
+  },
+  {
+   "id": "CND-1017",
+   "name": "Nikhil Jain",
+   "email": "nikhil.jain@example.com",
+   "department": "DevOps",
+   "status": "Active",
+   "online": false,
+   "warnings": 0,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-201",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-23T17:16:00.000Z"
+  },
+  {
+   "id": "CND-1018",
+   "name": "Riya Kapoor",
+   "email": "riya.kapoor@example.com",
+   "department": "HR",
+   "status": "Inactive",
+   "online": false,
+   "warnings": 0,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-201",
+    "EX-202",
+    "EX-203",
+    "EX-208",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-23T02:00:00.000Z"
+  },
+  {
+   "id": "CND-1019",
+   "name": "Manish Yadav",
+   "email": "manish.yadav@example.com",
+   "department": "Engineering",
+   "status": "Inactive",
+   "online": false,
+   "warnings": 3,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-202",
+    "EX-207",
+    "EX-208",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-23T11:34:00.000Z"
+  },
+  {
+   "id": "CND-1020",
+   "name": "Neha Saxena",
+   "email": "neha.saxena@example.com",
+   "department": "QA",
+   "status": "Inactive",
+   "online": false,
+   "warnings": 0,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-201",
+    "EX-202",
+    "EX-207",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-22T19:52:00.000Z"
+  },
+  {
+   "id": "CND-1021",
+   "name": "Harsh Vardhan",
+   "email": "harsh.vardhan@example.com",
+   "department": "Data Science",
+   "status": "Inactive",
+   "online": false,
+   "warnings": 3,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-201",
+    "EX-205",
+    "EX-206",
+    "EX-207",
+    "EX-208",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-23T08:30:00.000Z"
+  },
+  {
+   "id": "CND-1022",
+   "name": "Tanvi Shah",
+   "email": "tanvi.shah@example.com",
+   "department": "Product",
+   "status": "Active",
+   "online": true,
+   "warnings": 0,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-201",
+    "EX-203",
+    "EX-204",
+    "EX-206",
+    "EX-208",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-23T12:33:00.000Z"
+  },
+  {
+   "id": "CND-1023",
+   "name": "Varun Chopra",
+   "email": "varun.chopra@example.com",
+   "department": "DevOps",
+   "status": "Active",
+   "online": true,
+   "warnings": 1,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-201",
+    "EX-202",
+    "EX-205",
+    "EX-208"
+   ],
+   "lastActive": "2026-11-23T12:06:00.000Z"
+  },
+  {
+   "id": "CND-1024",
+   "name": "Lakshmi Krishnan",
+   "email": "lakshmi.krishnan@example.com",
+   "department": "HR",
+   "status": "Active",
+   "online": true,
+   "warnings": 2,
+   "cheatingFlags": 0,
+   "assignedExams": [
+    "EX-202",
+    "EX-204",
+    "EX-209"
+   ],
+   "lastActive": "2026-11-22T13:03:00.000Z"
+  }
+ ],
+ "questionBanks": [
+  {
+   "id": "QB-101",
+   "name": "React JS Fundamentals",
+   "topic": "React JS",
+   "description": "Components, hooks, state management and rendering.",
+   "createdAt": "2026-10-25T10:00:00.000Z",
+   "questions": [
+    {
+     "id": "Q-101-1",
+     "text": "Which hook is used to manage local state in a function component?",
+     "options": [
+      "useEffect",
+      "useState",
+      "useMemo",
+      "useRef"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-101-2",
+     "text": "What does the dependency array in useEffect control?",
+     "options": [
+      "Render order",
+      "When the effect re-runs",
+      "Component props",
+      "CSS updates"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-101-3",
+     "text": "What is the purpose of a \"key\" prop in lists?",
+     "options": [
+      "Styling",
+      "Identify elements between renders",
+      "Event handling",
+      "Accessibility"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-101-4",
+     "text": "Which hook memoizes a callback function?",
+     "options": [
+      "useMemo",
+      "useCallback",
+      "useReducer",
+      "useContext"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-101-5",
+     "text": "What is the Virtual DOM?",
+     "options": [
+      "A browser API",
+      "An in-memory representation of the UI",
+      "A CSS engine",
+      "A testing tool"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-101-6",
+     "text": "Which method lifts shared state in React?",
+     "options": [
+      "Prop drilling to a common parent",
+      "Global variables",
+      "localStorage only",
+      "Refs"
+     ],
+     "answer": 0,
+     "difficulty": "Hard"
+    }
+   ]
+  },
+  {
+   "id": "QB-102",
+   "name": "Selenium WebDriver",
+   "topic": "Selenium",
+   "description": "Locators, waits, WebDriver API and test frameworks.",
+   "createdAt": "2026-10-27T10:00:00.000Z",
+   "questions": [
+    {
+     "id": "Q-102-1",
+     "text": "Which locator is generally the fastest in Selenium?",
+     "options": [
+      "XPath",
+      "ID",
+      "CSS Selector",
+      "Link Text"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-102-2",
+     "text": "What does an explicit wait do?",
+     "options": [
+      "Waits a fixed time",
+      "Waits for a specific condition",
+      "Disables timeouts",
+      "Retries the test"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-102-3",
+     "text": "Which method switches to an iframe?",
+     "options": [
+      "driver.switchTo().frame()",
+      "driver.frame()",
+      "driver.goTo()",
+      "driver.window()"
+     ],
+     "answer": 0,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-102-4",
+     "text": "Which interface is used to perform mouse hover?",
+     "options": [
+      "Robot",
+      "Actions",
+      "Select",
+      "Alert"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-102-5",
+     "text": "What is the Page Object Model?",
+     "options": [
+      "A reporting tool",
+      "A design pattern for maintainable tests",
+      "A browser driver",
+      "A CI pipeline"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-102-6",
+     "text": "Which exception occurs when an element is no longer attached to the DOM?",
+     "options": [
+      "NoSuchElementException",
+      "StaleElementReferenceException",
+      "TimeoutException",
+      "WebDriverException"
+     ],
+     "answer": 1,
+     "difficulty": "Hard"
+    }
+   ]
+  },
+  {
+   "id": "QB-103",
+   "name": "Python Programming",
+   "topic": "Python",
+   "description": "Core syntax, data structures, functions and modules.",
+   "createdAt": "2026-10-29T10:00:00.000Z",
+   "questions": [
+    {
+     "id": "Q-103-1",
+     "text": "Which data type is immutable?",
+     "options": [
+      "list",
+      "dict",
+      "tuple",
+      "set"
+     ],
+     "answer": 2,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-103-2",
+     "text": "What does the \"yield\" keyword create?",
+     "options": [
+      "A class",
+      "A generator",
+      "A decorator",
+      "A thread"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-103-3",
+     "text": "What is the output of len({1, 2, 2, 3})?",
+     "options": [
+      "4",
+      "3",
+      "2",
+      "Error"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-103-4",
+     "text": "Which keyword is used to handle exceptions?",
+     "options": [
+      "catch",
+      "except",
+      "rescue",
+      "handle"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-103-5",
+     "text": "What does a decorator do?",
+     "options": [
+      "Formats strings",
+      "Wraps a function to extend its behaviour",
+      "Imports modules",
+      "Defines a class"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-103-6",
+     "text": "What is the GIL?",
+     "options": [
+      "A package manager",
+      "A lock allowing one thread to execute Python bytecode at a time",
+      "A GUI library",
+      "A testing framework"
+     ],
+     "answer": 1,
+     "difficulty": "Hard"
+    }
+   ]
+  },
+  {
+   "id": "QB-104",
+   "name": "Java OOPs Concepts",
+   "topic": "Java OOPs",
+   "description": "Encapsulation, inheritance, polymorphism and abstraction.",
+   "createdAt": "2026-10-31T10:00:00.000Z",
+   "questions": [
+    {
+     "id": "Q-104-1",
+     "text": "Which OOP principle hides internal state behind methods?",
+     "options": [
+      "Inheritance",
+      "Encapsulation",
+      "Polymorphism",
+      "Abstraction"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-104-2",
+     "text": "Method overloading is an example of?",
+     "options": [
+      "Runtime polymorphism",
+      "Compile-time polymorphism",
+      "Encapsulation",
+      "Inheritance"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-104-3",
+     "text": "Which keyword prevents a class from being inherited?",
+     "options": [
+      "static",
+      "final",
+      "abstract",
+      "private"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-104-4",
+     "text": "Can an interface have default methods (Java 8+)?",
+     "options": [
+      "Yes",
+      "No",
+      "Only static",
+      "Only private"
+     ],
+     "answer": 0,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-104-5",
+     "text": "Which keyword calls the parent class constructor?",
+     "options": [
+      "this",
+      "super",
+      "parent",
+      "base"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-104-6",
+     "text": "Java supports multiple inheritance of classes?",
+     "options": [
+      "Yes",
+      "No, only through interfaces",
+      "Only abstract classes",
+      "Only with generics"
+     ],
+     "answer": 1,
+     "difficulty": "Hard"
+    }
+   ]
+  },
+  {
+   "id": "QB-105",
+   "name": "JavaScript Essentials",
+   "topic": "JavaScript",
+   "description": "Closures, promises, the event loop and ES6+.",
+   "createdAt": "2026-11-02T10:00:00.000Z",
+   "questions": [
+    {
+     "id": "Q-105-1",
+     "text": "What is a closure?",
+     "options": [
+      "A loop construct",
+      "A function with access to its outer scope",
+      "A class method",
+      "An error type"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-105-2",
+     "text": "Which is NOT a primitive type?",
+     "options": [
+      "string",
+      "number",
+      "object",
+      "boolean"
+     ],
+     "answer": 2,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-105-3",
+     "text": "What does Promise.all do?",
+     "options": [
+      "Runs promises sequentially",
+      "Resolves when all promises resolve",
+      "Cancels promises",
+      "Returns the first result"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-105-4",
+     "text": "Difference between == and ===?",
+     "options": [
+      "None",
+      "=== also checks type",
+      "== is faster",
+      "=== is deprecated"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    }
+   ]
+  },
+  {
+   "id": "QB-106",
+   "name": "SQL & Databases",
+   "topic": "SQL",
+   "description": "Queries, joins, indexing and normalization.",
+   "createdAt": "2026-11-04T10:00:00.000Z",
+   "questions": [
+    {
+     "id": "Q-106-1",
+     "text": "Which JOIN returns only matching rows from both tables?",
+     "options": [
+      "LEFT JOIN",
+      "INNER JOIN",
+      "FULL JOIN",
+      "CROSS JOIN"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-106-2",
+     "text": "Which clause filters grouped rows?",
+     "options": [
+      "WHERE",
+      "HAVING",
+      "ORDER BY",
+      "LIMIT"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-106-3",
+     "text": "What does an index improve?",
+     "options": [
+      "Write speed",
+      "Read/query speed",
+      "Storage size",
+      "Security"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-106-4",
+     "text": "Which normal form removes transitive dependencies?",
+     "options": [
+      "1NF",
+      "2NF",
+      "3NF",
+      "BCNF"
+     ],
+     "answer": 2,
+     "difficulty": "Hard"
+    }
+   ]
+  },
+  {
+   "id": "QB-107",
+   "name": "Cloud & DevOps Basics",
+   "topic": "DevOps",
+   "description": "Docker, CI/CD, Kubernetes and cloud fundamentals.",
+   "createdAt": "2026-11-06T10:00:00.000Z",
+   "questions": [
+    {
+     "id": "Q-107-1",
+     "text": "What is a Docker image?",
+     "options": [
+      "A running container",
+      "A read-only template for containers",
+      "A VM snapshot",
+      "A log file"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-107-2",
+     "text": "What does CI stand for?",
+     "options": [
+      "Code Inspection",
+      "Continuous Integration",
+      "Cloud Infrastructure",
+      "Container Instance"
+     ],
+     "answer": 1,
+     "difficulty": "Easy"
+    },
+    {
+     "id": "Q-107-3",
+     "text": "Smallest deployable unit in Kubernetes?",
+     "options": [
+      "Node",
+      "Pod",
+      "Service",
+      "Cluster"
+     ],
+     "answer": 1,
+     "difficulty": "Medium"
+    },
+    {
+     "id": "Q-107-4",
+     "text": "Which tool is used for infrastructure as code?",
+     "options": [
+      "Terraform",
+      "Jira",
+      "Figma",
+      "Postman"
+     ],
+     "answer": 0,
+     "difficulty": "Medium"
+    }
+   ]
+  }
+ ],
+ "exams": [
+  {
+   "id": "EX-201",
+   "title": "React Developer Assessment",
+   "bankId": "QB-101",
+   "status": "Completed",
+   "startTime": "2026-11-12T10:00:00.000Z",
+   "duration": 60,
+   "passMark": 60,
+   "candidates": [
+    "CND-1001",
+    "CND-1003",
+    "CND-1005",
+    "CND-1006",
+    "CND-1009",
+    "CND-1013",
+    "CND-1015",
+    "CND-1017",
+    "CND-1018",
+    "CND-1020",
+    "CND-1021",
+    "CND-1022",
+    "CND-1023"
+   ]
+  },
+  {
+   "id": "EX-202",
+   "title": "Automation Testing (Selenium)",
+   "bankId": "QB-102",
+   "status": "Completed",
+   "startTime": "2026-11-15T11:00:00.000Z",
+   "duration": 45,
+   "passMark": 60,
+   "candidates": [
+    "CND-1001",
+    "CND-1002",
+    "CND-1004",
+    "CND-1008",
+    "CND-1009",
+    "CND-1010",
+    "CND-1011",
+    "CND-1012",
+    "CND-1018",
+    "CND-1019",
+    "CND-1020",
+    "CND-1023",
+    "CND-1024"
+   ]
+  },
+  {
+   "id": "EX-203",
+   "title": "Python Screening Test",
+   "bankId": "QB-103",
+   "status": "Completed",
+   "startTime": "2026-11-18T12:00:00.000Z",
+   "duration": 45,
+   "passMark": 60,
+   "candidates": [
+    "CND-1001",
+    "CND-1004",
+    "CND-1005",
+    "CND-1007",
+    "CND-1012",
+    "CND-1014",
+    "CND-1018",
+    "CND-1022"
+   ]
+  },
+  {
+   "id": "EX-204",
+   "title": "Java OOPs Evaluation",
+   "bankId": "QB-104",
+   "status": "Completed",
+   "startTime": "2026-11-21T13:00:00.000Z",
+   "duration": 60,
+   "passMark": 60,
+   "candidates": [
+    "CND-1002",
+    "CND-1003",
+    "CND-1004",
+    "CND-1006",
+    "CND-1008",
+    "CND-1010",
+    "CND-1011",
+    "CND-1012",
+    "CND-1022",
+    "CND-1024"
+   ]
+  },
+  {
+   "id": "EX-205",
+   "title": "Frontend Live Assessment",
+   "bankId": "QB-105",
+   "status": "Live",
+   "startTime": "2026-11-26T04:01:31.087Z",
+   "duration": 90,
+   "passMark": 60,
+   "candidates": [
+    "CND-1003",
+    "CND-1004",
+    "CND-1005",
+    "CND-1010",
+    "CND-1013",
+    "CND-1015",
+    "CND-1016",
+    "CND-1021",
+    "CND-1023"
+   ]
+  },
+  {
+   "id": "EX-206",
+   "title": "Selenium Advanced Live Test",
+   "bankId": "QB-102",
+   "status": "Live",
+   "startTime": "2026-11-26T03:55:31.087Z",
+   "duration": 60,
+   "passMark": 60,
+   "candidates": [
+    "CND-1001",
+    "CND-1002",
+    "CND-1007",
+    "CND-1009",
+    "CND-1011",
+    "CND-1015",
+    "CND-1021",
+    "CND-1022"
+   ]
+  },
+  {
+   "id": "EX-207",
+   "title": "SQL Proficiency Test",
+   "bankId": "QB-106",
+   "status": "Scheduled",
+   "startTime": "2026-11-26T12:00:00.000Z",
+   "duration": 40,
+   "passMark": 60,
+   "candidates": [
+    "CND-1006",
+    "CND-1011",
+    "CND-1016",
+    "CND-1019",
+    "CND-1020",
+    "CND-1021"
+   ]
+  },
+  {
+   "id": "EX-208",
+   "title": "DevOps Fundamentals",
+   "bankId": "QB-107",
+   "status": "Scheduled",
+   "startTime": "2026-11-28T13:00:00.000Z",
+   "duration": 50,
+   "passMark": 60,
+   "candidates": [
+    "CND-1003",
+    "CND-1005",
+    "CND-1006",
+    "CND-1007",
+    "CND-1011",
+    "CND-1018",
+    "CND-1019",
+    "CND-1021",
+    "CND-1022",
+    "CND-1023"
+   ]
+  },
+  {
+   "id": "EX-209",
+   "title": "Python Advanced Round",
+   "bankId": "QB-103",
+   "status": "Scheduled",
+   "startTime": "2026-12-01T10:00:00.000Z",
+   "duration": 60,
+   "passMark": 60,
+   "candidates": [
+    "CND-1001",
+    "CND-1003",
+    "CND-1004",
+    "CND-1006",
+    "CND-1007",
+    "CND-1009",
+    "CND-1010",
+    "CND-1011",
+    "CND-1015",
+    "CND-1017",
+    "CND-1018",
+    "CND-1019",
+    "CND-1020",
+    "CND-1021",
+    "CND-1022",
+    "CND-1024"
+   ]
+  }
+ ],
+ "results": [
+  {
+   "id": "RS-3001",
+   "candidateId": "CND-1001",
+   "examId": "EX-201",
+   "score": 31,
+   "correct": 2,
+   "total": 6,
+   "timeTaken": 49,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3002",
+   "candidateId": "CND-1003",
+   "examId": "EX-201",
+   "score": 82,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 27,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3003",
+   "candidateId": "CND-1005",
+   "examId": "EX-201",
+   "score": 90,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 44,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3004",
+   "candidateId": "CND-1006",
+   "examId": "EX-201",
+   "score": 64,
+   "correct": 4,
+   "total": 6,
+   "timeTaken": 52,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3005",
+   "candidateId": "CND-1009",
+   "examId": "EX-201",
+   "score": 99,
+   "correct": 6,
+   "total": 6,
+   "timeTaken": 34,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3006",
+   "candidateId": "CND-1013",
+   "examId": "EX-201",
+   "score": 80,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 34,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3007",
+   "candidateId": "CND-1015",
+   "examId": "EX-201",
+   "score": 66,
+   "correct": 4,
+   "total": 6,
+   "timeTaken": 48,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3008",
+   "candidateId": "CND-1017",
+   "examId": "EX-201",
+   "score": 43,
+   "correct": 3,
+   "total": 6,
+   "timeTaken": 38,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3009",
+   "candidateId": "CND-1018",
+   "examId": "EX-201",
+   "score": 70,
+   "correct": 4,
+   "total": 6,
+   "timeTaken": 46,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3010",
+   "candidateId": "CND-1020",
+   "examId": "EX-201",
+   "score": 47,
+   "correct": 3,
+   "total": 6,
+   "timeTaken": 49,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3011",
+   "candidateId": "CND-1021",
+   "examId": "EX-201",
+   "score": 53,
+   "correct": 3,
+   "total": 6,
+   "timeTaken": 42,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3012",
+   "candidateId": "CND-1022",
+   "examId": "EX-201",
+   "score": 64,
+   "correct": 4,
+   "total": 6,
+   "timeTaken": 36,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3013",
+   "candidateId": "CND-1023",
+   "examId": "EX-201",
+   "score": 79,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 52,
+   "submittedAt": "2026-11-12T11:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3014",
+   "candidateId": "CND-1001",
+   "examId": "EX-202",
+   "score": 91,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 30,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3015",
+   "candidateId": "CND-1002",
+   "examId": "EX-202",
+   "score": 59,
+   "correct": 4,
+   "total": 6,
+   "timeTaken": 26,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3016",
+   "candidateId": "CND-1004",
+   "examId": "EX-202",
+   "score": 38,
+   "correct": 2,
+   "total": 6,
+   "timeTaken": 30,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3017",
+   "candidateId": "CND-1008",
+   "examId": "EX-202",
+   "score": 82,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 44,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3018",
+   "candidateId": "CND-1009",
+   "examId": "EX-202",
+   "score": 87,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 35,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3019",
+   "candidateId": "CND-1010",
+   "examId": "EX-202",
+   "score": 65,
+   "correct": 4,
+   "total": 6,
+   "timeTaken": 18,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3020",
+   "candidateId": "CND-1011",
+   "examId": "EX-202",
+   "score": 95,
+   "correct": 6,
+   "total": 6,
+   "timeTaken": 33,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3021",
+   "candidateId": "CND-1012",
+   "examId": "EX-202",
+   "score": 42,
+   "correct": 3,
+   "total": 6,
+   "timeTaken": 38,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3022",
+   "candidateId": "CND-1018",
+   "examId": "EX-202",
+   "score": 54,
+   "correct": 3,
+   "total": 6,
+   "timeTaken": 30,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3023",
+   "candidateId": "CND-1019",
+   "examId": "EX-202",
+   "score": 38,
+   "correct": 2,
+   "total": 6,
+   "timeTaken": 21,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3024",
+   "candidateId": "CND-1020",
+   "examId": "EX-202",
+   "score": 50,
+   "correct": 3,
+   "total": 6,
+   "timeTaken": 43,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3025",
+   "candidateId": "CND-1023",
+   "examId": "EX-202",
+   "score": 82,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 37,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3026",
+   "candidateId": "CND-1024",
+   "examId": "EX-202",
+   "score": 80,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 27,
+   "submittedAt": "2026-11-15T11:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3027",
+   "candidateId": "CND-1001",
+   "examId": "EX-203",
+   "score": 61,
+   "correct": 4,
+   "total": 6,
+   "timeTaken": 34,
+   "submittedAt": "2026-11-18T12:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3028",
+   "candidateId": "CND-1004",
+   "examId": "EX-203",
+   "score": 74,
+   "correct": 4,
+   "total": 6,
+   "timeTaken": 24,
+   "submittedAt": "2026-11-18T12:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3029",
+   "candidateId": "CND-1005",
+   "examId": "EX-203",
+   "score": 81,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 36,
+   "submittedAt": "2026-11-18T12:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3030",
+   "candidateId": "CND-1007",
+   "examId": "EX-203",
+   "score": 41,
+   "correct": 2,
+   "total": 6,
+   "timeTaken": 23,
+   "submittedAt": "2026-11-18T12:45:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3031",
+   "candidateId": "CND-1012",
+   "examId": "EX-203",
+   "score": 86,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 27,
+   "submittedAt": "2026-11-18T12:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3032",
+   "candidateId": "CND-1014",
+   "examId": "EX-203",
+   "score": 89,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 44,
+   "submittedAt": "2026-11-18T12:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3033",
+   "candidateId": "CND-1018",
+   "examId": "EX-203",
+   "score": 91,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 28,
+   "submittedAt": "2026-11-18T12:45:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3034",
+   "candidateId": "CND-1022",
+   "examId": "EX-203",
+   "score": 51,
+   "correct": 3,
+   "total": 6,
+   "timeTaken": 25,
+   "submittedAt": "2026-11-18T12:45:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3035",
+   "candidateId": "CND-1002",
+   "examId": "EX-204",
+   "score": 68,
+   "correct": 4,
+   "total": 6,
+   "timeTaken": 52,
+   "submittedAt": "2026-11-21T14:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3036",
+   "candidateId": "CND-1003",
+   "examId": "EX-204",
+   "score": 86,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 55,
+   "submittedAt": "2026-11-21T14:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3037",
+   "candidateId": "CND-1004",
+   "examId": "EX-204",
+   "score": 54,
+   "correct": 3,
+   "total": 6,
+   "timeTaken": 26,
+   "submittedAt": "2026-11-21T14:00:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3038",
+   "candidateId": "CND-1006",
+   "examId": "EX-204",
+   "score": 42,
+   "correct": 3,
+   "total": 6,
+   "timeTaken": 36,
+   "submittedAt": "2026-11-21T14:00:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3039",
+   "candidateId": "CND-1008",
+   "examId": "EX-204",
+   "score": 76,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 53,
+   "submittedAt": "2026-11-21T14:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3040",
+   "candidateId": "CND-1010",
+   "examId": "EX-204",
+   "score": 72,
+   "correct": 4,
+   "total": 6,
+   "timeTaken": 52,
+   "submittedAt": "2026-11-21T14:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3041",
+   "candidateId": "CND-1011",
+   "examId": "EX-204",
+   "score": 47,
+   "correct": 3,
+   "total": 6,
+   "timeTaken": 46,
+   "submittedAt": "2026-11-21T14:00:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3042",
+   "candidateId": "CND-1012",
+   "examId": "EX-204",
+   "score": 86,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 25,
+   "submittedAt": "2026-11-21T14:00:00.000Z",
+   "result": "Pass"
+  },
+  {
+   "id": "RS-3043",
+   "candidateId": "CND-1022",
+   "examId": "EX-204",
+   "score": 56,
+   "correct": 3,
+   "total": 6,
+   "timeTaken": 37,
+   "submittedAt": "2026-11-21T14:00:00.000Z",
+   "result": "Fail"
+  },
+  {
+   "id": "RS-3044",
+   "candidateId": "CND-1024",
+   "examId": "EX-204",
+   "score": 91,
+   "correct": 5,
+   "total": 6,
+   "timeTaken": 45,
+   "submittedAt": "2026-11-21T14:00:00.000Z",
+   "result": "Pass"
+  }
+ ],
+ "feedback": [
+  {
+   "id": "FB-4001",
+   "candidateId": "CND-1001",
+   "examId": "EX-201",
+   "rating": 3,
+   "message": "Time management needs improvement. We recommend practising mock tests.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-12T11:00:00.000Z"
+  },
+  {
+   "id": "FB-4002",
+   "candidateId": "CND-1003",
+   "examId": "EX-201",
+   "rating": 4,
+   "message": "Excellent result. You have been shortlisted for the next round.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-12T11:00:00.000Z"
+  },
+  {
+   "id": "FB-4003",
+   "candidateId": "CND-1009",
+   "examId": "EX-201",
+   "rating": 4,
+   "message": "Excellent result. You have been shortlisted for the next round.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-12T11:00:00.000Z"
+  },
+  {
+   "id": "FB-4004",
+   "candidateId": "CND-1015",
+   "examId": "EX-201",
+   "rating": 4,
+   "message": "Excellent result. You have been shortlisted for the next round.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-12T11:00:00.000Z"
+  },
+  {
+   "id": "FB-4005",
+   "candidateId": "CND-1017",
+   "examId": "EX-201",
+   "rating": 2,
+   "message": "Time management needs improvement. We recommend practising mock tests.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-12T11:00:00.000Z"
+  },
+  {
+   "id": "FB-4006",
+   "candidateId": "CND-1018",
+   "examId": "EX-201",
+   "rating": 5,
+   "message": "Excellent result. You have been shortlisted for the next round.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-12T11:00:00.000Z"
+  },
+  {
+   "id": "FB-4007",
+   "candidateId": "CND-1022",
+   "examId": "EX-201",
+   "rating": 5,
+   "message": "Excellent result. You have been shortlisted for the next round.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-12T11:00:00.000Z"
+  },
+  {
+   "id": "FB-4008",
+   "candidateId": "CND-1023",
+   "examId": "EX-201",
+   "rating": 4,
+   "message": "Well done. Your answers showed clear practical knowledge.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-12T11:00:00.000Z"
+  },
+  {
+   "id": "FB-4009",
+   "candidateId": "CND-1001",
+   "examId": "EX-202",
+   "rating": 4,
+   "message": "Great performance! Strong understanding of core concepts. Keep it up.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-15T11:45:00.000Z"
+  },
+  {
+   "id": "FB-4010",
+   "candidateId": "CND-1002",
+   "examId": "EX-202",
+   "rating": 2,
+   "message": "Time management needs improvement. We recommend practising mock tests.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-15T11:45:00.000Z"
+  },
+  {
+   "id": "FB-4011",
+   "candidateId": "CND-1004",
+   "examId": "EX-202",
+   "rating": 3,
+   "message": "Please revisit the fundamentals and attempt the re-test next week.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-15T11:45:00.000Z"
+  },
+  {
+   "id": "FB-4012",
+   "candidateId": "CND-1010",
+   "examId": "EX-202",
+   "rating": 4,
+   "message": "Excellent result. You have been shortlisted for the next round.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-15T11:45:00.000Z"
+  },
+  {
+   "id": "FB-4013",
+   "candidateId": "CND-1011",
+   "examId": "EX-202",
+   "rating": 4,
+   "message": "Well done. Your answers showed clear practical knowledge.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-15T11:45:00.000Z"
+  },
+  {
+   "id": "FB-4014",
+   "candidateId": "CND-1018",
+   "examId": "EX-202",
+   "rating": 3,
+   "message": "Please revisit the fundamentals and attempt the re-test next week.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-15T11:45:00.000Z"
+  },
+  {
+   "id": "FB-4015",
+   "candidateId": "CND-1020",
+   "examId": "EX-202",
+   "rating": 2,
+   "message": "Good effort, but several core topics need more practice.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-15T11:45:00.000Z"
+  },
+  {
+   "id": "FB-4016",
+   "candidateId": "CND-1001",
+   "examId": "EX-203",
+   "rating": 4,
+   "message": "Great performance! Strong understanding of core concepts. Keep it up.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-18T12:45:00.000Z"
+  },
+  {
+   "id": "FB-4017",
+   "candidateId": "CND-1004",
+   "examId": "EX-203",
+   "rating": 5,
+   "message": "Well done. Your answers showed clear practical knowledge.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-18T12:45:00.000Z"
+  },
+  {
+   "id": "FB-4018",
+   "candidateId": "CND-1014",
+   "examId": "EX-203",
+   "rating": 4,
+   "message": "Well done. Your answers showed clear practical knowledge.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-18T12:45:00.000Z"
+  },
+  {
+   "id": "FB-4019",
+   "candidateId": "CND-1006",
+   "examId": "EX-204",
+   "rating": 3,
+   "message": "Good effort, but several core topics need more practice.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-21T14:00:00.000Z"
+  },
+  {
+   "id": "FB-4020",
+   "candidateId": "CND-1008",
+   "examId": "EX-204",
+   "rating": 5,
+   "message": "Great performance! Strong understanding of core concepts. Keep it up.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-21T14:00:00.000Z"
+  },
+  {
+   "id": "FB-4021",
+   "candidateId": "CND-1010",
+   "examId": "EX-204",
+   "rating": 5,
+   "message": "Well done. Your answers showed clear practical knowledge.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-21T14:00:00.000Z"
+  },
+  {
+   "id": "FB-4022",
+   "candidateId": "CND-1012",
+   "examId": "EX-204",
+   "rating": 5,
+   "message": "Well done. Your answers showed clear practical knowledge.",
+   "sentBy": "Exam Administrator",
+   "sentAt": "2026-11-21T14:00:00.000Z"
+  }
+ ],
+ "auditLogs": [
+  {
+   "id": "LOG-5084",
+   "candidateId": "CND-1013",
+   "type": "Validation",
+   "event": "ID verification passed",
+   "examId": "EX-205",
+   "timestamp": "2026-11-24T09:52:00.000Z",
+   "ip": "10.0.8.103"
+  },
+  {
+   "id": "LOG-5078",
+   "candidateId": "CND-1012",
+   "type": "Normal",
+   "event": "Webcam connected",
+   "examId": "EX-204",
+   "timestamp": "2026-11-24T09:29:00.000Z",
+   "ip": "10.0.14.117"
+  },
+  {
+   "id": "LOG-5066",
+   "candidateId": "CND-1010",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-202",
+   "timestamp": "2026-11-24T09:25:00.000Z",
+   "ip": "10.0.18.56"
+  },
+  {
+   "id": "LOG-5060",
+   "candidateId": "CND-1009",
+   "type": "Normal",
+   "event": "Microphone check passed",
+   "examId": "EX-201",
+   "timestamp": "2026-11-24T09:02:00.000Z",
+   "ip": "10.0.9.3"
+  },
+  {
+   "id": "LOG-5068",
+   "candidateId": "CND-1010",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-202",
+   "timestamp": "2026-11-24T09:02:00.000Z",
+   "ip": "10.0.4.164"
+  },
+  {
+   "id": "LOG-5065",
+   "candidateId": "CND-1010",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-209",
+   "timestamp": "2026-11-24T08:24:00.000Z",
+   "ip": "10.0.7.12"
+  },
+  {
+   "id": "LOG-5074",
+   "candidateId": "CND-1011",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-208",
+   "timestamp": "2026-11-24T06:54:00.000Z",
+   "ip": "10.0.2.172"
+  },
+  {
+   "id": "LOG-5062",
+   "candidateId": "CND-1009",
+   "type": "Validation",
+   "event": "Face match verified",
+   "examId": "EX-202",
+   "timestamp": "2026-11-24T05:52:00.000Z",
+   "ip": "10.0.4.11"
+  },
+  {
+   "id": "LOG-5024",
+   "candidateId": "CND-1004",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-205",
+   "timestamp": "2026-11-24T05:49:00.000Z",
+   "ip": "10.0.14.176"
+  },
+  {
+   "id": "LOG-5052",
+   "candidateId": "CND-1008",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-204",
+   "timestamp": "2026-11-24T05:38:00.000Z",
+   "ip": "10.0.17.231"
+  },
+  {
+   "id": "LOG-5027",
+   "candidateId": "CND-1004",
+   "type": "Warning",
+   "event": "Multiple faces detected",
+   "examId": "EX-209",
+   "timestamp": "2026-11-24T05:26:00.000Z",
+   "ip": "10.0.3.133"
+  },
+  {
+   "id": "LOG-5121",
+   "candidateId": "CND-1018",
+   "type": "Warning",
+   "event": "Window lost focus",
+   "examId": "EX-209",
+   "timestamp": "2026-11-24T05:01:00.000Z",
+   "ip": "10.0.18.197"
+  },
+  {
+   "id": "LOG-5055",
+   "candidateId": "CND-1009",
+   "type": "Normal",
+   "event": "Webcam connected",
+   "examId": "EX-209",
+   "timestamp": "2026-11-24T04:57:00.000Z",
+   "ip": "10.0.18.30"
+  },
+  {
+   "id": "LOG-5144",
+   "candidateId": "CND-1022",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-209",
+   "timestamp": "2026-11-24T04:54:00.000Z",
+   "ip": "10.0.4.137"
+  },
+  {
+   "id": "LOG-5127",
+   "candidateId": "CND-1019",
+   "type": "Warning",
+   "event": "Copy/paste attempt blocked",
+   "examId": "EX-202",
+   "timestamp": "2026-11-24T04:26:00.000Z",
+   "ip": "10.0.6.192"
+  },
+  {
+   "id": "LOG-5012",
+   "candidateId": "CND-1002",
+   "type": "Normal",
+   "event": "Logged out",
+   "examId": "EX-202",
+   "timestamp": "2026-11-24T04:20:00.000Z",
+   "ip": "10.0.8.79"
+  },
+  {
+   "id": "LOG-5091",
+   "candidateId": "CND-1014",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-203",
+   "timestamp": "2026-11-24T04:02:00.000Z",
+   "ip": "10.0.15.106"
+  },
+  {
+   "id": "LOG-5125",
+   "candidateId": "CND-1019",
+   "type": "Validation",
+   "event": "ID verification passed",
+   "examId": "EX-209",
+   "timestamp": "2026-11-24T03:42:00.000Z",
+   "ip": "10.0.13.224"
+  },
+  {
+   "id": "LOG-5120",
+   "candidateId": "CND-1018",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-209",
+   "timestamp": "2026-11-24T03:22:00.000Z",
+   "ip": "10.0.9.182"
+  },
+  {
+   "id": "LOG-5039",
+   "candidateId": "CND-1006",
+   "type": "Normal",
+   "event": "Logged out",
+   "examId": "EX-204",
+   "timestamp": "2026-11-24T03:13:00.000Z",
+   "ip": "10.0.18.163"
+  },
+  {
+   "id": "LOG-5050",
+   "candidateId": "CND-1008",
+   "type": "Normal",
+   "event": "Webcam connected",
+   "examId": "EX-202",
+   "timestamp": "2026-11-24T02:49:00.000Z",
+   "ip": "10.0.1.120"
+  },
+  {
+   "id": "LOG-5159",
+   "candidateId": "CND-1024",
+   "type": "Validation",
+   "event": "ID verification failed",
+   "examId": "EX-202",
+   "timestamp": "2026-11-24T02:28:00.000Z",
+   "ip": "10.0.1.212"
+  },
+  {
+   "id": "LOG-5117",
+   "candidateId": "CND-1017",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-201",
+   "timestamp": "2026-11-24T01:58:00.000Z",
+   "ip": "10.0.16.88"
+  },
+  {
+   "id": "LOG-5146",
+   "candidateId": "CND-1022",
+   "type": "Warning",
+   "event": "Exited full screen",
+   "examId": "EX-209",
+   "timestamp": "2026-11-24T01:46:00.000Z",
+   "ip": "10.0.16.161"
+  },
+  {
+   "id": "LOG-5103",
+   "candidateId": "CND-1015",
+   "type": "Warning",
+   "event": "Face not visible",
+   "examId": "EX-209",
+   "timestamp": "2026-11-24T00:40:00.000Z",
+   "ip": "10.0.6.199"
+  },
+  {
+   "id": "LOG-5090",
+   "candidateId": "CND-1014",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-203",
+   "timestamp": "2026-11-24T00:33:00.000Z",
+   "ip": "10.0.6.217"
+  },
+  {
+   "id": "LOG-5013",
+   "candidateId": "CND-1002",
+   "type": "Validation",
+   "event": "Room scan completed",
+   "examId": "EX-204",
+   "timestamp": "2026-11-24T00:14:00.000Z",
+   "ip": "10.0.3.230"
+  },
+  {
+   "id": "LOG-5128",
+   "candidateId": "CND-1019",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-208",
+   "timestamp": "2026-11-23T23:29:00.000Z",
+   "ip": "10.0.3.244"
+  },
+  {
+   "id": "LOG-5064",
+   "candidateId": "CND-1010",
+   "type": "Normal",
+   "event": "Webcam connected",
+   "examId": "EX-204",
+   "timestamp": "2026-11-23T23:08:00.000Z",
+   "ip": "10.0.17.40"
+  },
+  {
+   "id": "LOG-5011",
+   "candidateId": "CND-1002",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-206",
+   "timestamp": "2026-11-23T23:01:00.000Z",
+   "ip": "10.0.1.69"
+  },
+  {
+   "id": "LOG-5095",
+   "candidateId": "CND-1014",
+   "type": "Warning",
+   "event": "Window lost focus",
+   "examId": "EX-203",
+   "timestamp": "2026-11-23T22:26:00.000Z",
+   "ip": "10.0.15.53"
+  },
+  {
+   "id": "LOG-5057",
+   "candidateId": "CND-1009",
+   "type": "Warning",
+   "event": "Multiple faces detected",
+   "examId": "EX-206",
+   "timestamp": "2026-11-23T22:07:00.000Z",
+   "ip": "10.0.4.23"
+  },
+  {
+   "id": "LOG-5118",
+   "candidateId": "CND-1018",
+   "type": "Normal",
+   "event": "Microphone check passed",
+   "examId": "EX-202",
+   "timestamp": "2026-11-23T20:35:00.000Z",
+   "ip": "10.0.19.143"
+  },
+  {
+   "id": "LOG-5148",
+   "candidateId": "CND-1023",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-208",
+   "timestamp": "2026-11-23T19:47:00.000Z",
+   "ip": "10.0.5.78"
+  },
+  {
+   "id": "LOG-5009",
+   "candidateId": "CND-1002",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-204",
+   "timestamp": "2026-11-23T19:03:00.000Z",
+   "ip": "10.0.13.30"
+  },
+  {
+   "id": "LOG-5092",
+   "candidateId": "CND-1014",
+   "type": "Validation",
+   "event": "ID verification passed",
+   "examId": "EX-203",
+   "timestamp": "2026-11-23T18:42:00.000Z",
+   "ip": "10.0.2.244"
+  },
+  {
+   "id": "LOG-5094",
+   "candidateId": "CND-1014",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-203",
+   "timestamp": "2026-11-23T18:13:00.000Z",
+   "ip": "10.0.9.162"
+  },
+  {
+   "id": "LOG-5083",
+   "candidateId": "CND-1013",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-201",
+   "timestamp": "2026-11-23T17:50:00.000Z",
+   "ip": "10.0.4.112"
+  },
+  {
+   "id": "LOG-5077",
+   "candidateId": "CND-1012",
+   "type": "Validation",
+   "event": "Browser lockdown verified",
+   "examId": "EX-204",
+   "timestamp": "2026-11-23T17:20:00.000Z",
+   "ip": "10.0.16.41"
+  },
+  {
+   "id": "LOG-5073",
+   "candidateId": "CND-1011",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-202",
+   "timestamp": "2026-11-23T17:15:00.000Z",
+   "ip": "10.0.15.126"
+  },
+  {
+   "id": "LOG-5122",
+   "candidateId": "CND-1018",
+   "type": "Validation",
+   "event": "ID verification failed",
+   "examId": "EX-202",
+   "timestamp": "2026-11-23T16:55:00.000Z",
+   "ip": "10.0.8.58"
+  },
+  {
+   "id": "LOG-5093",
+   "candidateId": "CND-1014",
+   "type": "Warning",
+   "event": "Tab switch detected",
+   "examId": "EX-203",
+   "timestamp": "2026-11-23T16:35:00.000Z",
+   "ip": "10.0.9.227"
+  },
+  {
+   "id": "LOG-5082",
+   "candidateId": "CND-1013",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-201",
+   "timestamp": "2026-11-23T16:32:00.000Z",
+   "ip": "10.0.5.212"
+  },
+  {
+   "id": "LOG-5061",
+   "candidateId": "CND-1009",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-201",
+   "timestamp": "2026-11-23T16:30:00.000Z",
+   "ip": "10.0.3.124"
+  },
+  {
+   "id": "LOG-5101",
+   "candidateId": "CND-1015",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-201",
+   "timestamp": "2026-11-23T16:17:00.000Z",
+   "ip": "10.0.6.205"
+  },
+  {
+   "id": "LOG-5030",
+   "candidateId": "CND-1005",
+   "type": "Warning",
+   "event": "Tab switch detected",
+   "examId": "EX-201",
+   "timestamp": "2026-11-23T15:56:00.000Z",
+   "ip": "10.0.19.153"
+  },
+  {
+   "id": "LOG-5001",
+   "candidateId": "CND-1001",
+   "type": "Warning",
+   "event": "Multiple faces detected",
+   "examId": "EX-209",
+   "timestamp": "2026-11-23T15:49:00.000Z",
+   "ip": "10.0.14.2"
+  },
+  {
+   "id": "LOG-5089",
+   "candidateId": "CND-1014",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-203",
+   "timestamp": "2026-11-23T15:14:00.000Z",
+   "ip": "10.0.0.9"
+  },
+  {
+   "id": "LOG-5154",
+   "candidateId": "CND-1024",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-202",
+   "timestamp": "2026-11-23T15:09:00.000Z",
+   "ip": "10.0.4.58"
+  },
+  {
+   "id": "LOG-5086",
+   "candidateId": "CND-1013",
+   "type": "Validation",
+   "event": "Face match verified",
+   "examId": "EX-205",
+   "timestamp": "2026-11-23T14:43:00.000Z",
+   "ip": "10.0.15.148"
+  },
+  {
+   "id": "LOG-5096",
+   "candidateId": "CND-1015",
+   "type": "Normal",
+   "event": "Webcam connected",
+   "examId": "EX-206",
+   "timestamp": "2026-11-23T14:43:00.000Z",
+   "ip": "10.0.2.100"
+  },
+  {
+   "id": "LOG-5015",
+   "candidateId": "CND-1003",
+   "type": "Normal",
+   "event": "Webcam connected",
+   "examId": "EX-205",
+   "timestamp": "2026-11-23T13:34:00.000Z",
+   "ip": "10.0.8.172"
+  },
+  {
+   "id": "LOG-5035",
+   "candidateId": "CND-1005",
+   "type": "Warning",
+   "event": "Window lost focus",
+   "examId": "EX-203",
+   "timestamp": "2026-11-23T12:41:00.000Z",
+   "ip": "10.0.10.23"
+  },
+  {
+   "id": "LOG-5054",
+   "candidateId": "CND-1008",
+   "type": "Validation",
+   "event": "ID verification passed",
+   "examId": "EX-204",
+   "timestamp": "2026-11-23T11:27:00.000Z",
+   "ip": "10.0.14.164"
+  },
+  {
+   "id": "LOG-5045",
+   "candidateId": "CND-1007",
+   "type": "Normal",
+   "event": "Microphone check passed",
+   "examId": "EX-209",
+   "timestamp": "2026-11-23T11:25:00.000Z",
+   "ip": "10.0.13.109"
+  },
+  {
+   "id": "LOG-5047",
+   "candidateId": "CND-1007",
+   "type": "Warning",
+   "event": "Tab switch detected",
+   "examId": "EX-209",
+   "timestamp": "2026-11-23T11:21:00.000Z",
+   "ip": "10.0.7.238"
+  },
+  {
+   "id": "LOG-5150",
+   "candidateId": "CND-1023",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-202",
+   "timestamp": "2026-11-23T11:05:00.000Z",
+   "ip": "10.0.1.83"
+  },
+  {
+   "id": "LOG-5063",
+   "candidateId": "CND-1009",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-209",
+   "timestamp": "2026-11-23T11:02:00.000Z",
+   "ip": "10.0.19.168"
+  },
+  {
+   "id": "LOG-5108",
+   "candidateId": "CND-1016",
+   "type": "Validation",
+   "event": "Room scan completed",
+   "examId": "EX-207",
+   "timestamp": "2026-11-23T10:26:00.000Z",
+   "ip": "10.0.20.73"
+  },
+  {
+   "id": "LOG-5097",
+   "candidateId": "CND-1015",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-201",
+   "timestamp": "2026-11-23T10:00:00.000Z",
+   "ip": "10.0.7.92"
+  },
+  {
+   "id": "LOG-5002",
+   "candidateId": "CND-1001",
+   "type": "Warning",
+   "event": "Face not visible",
+   "examId": "EX-209",
+   "timestamp": "2026-11-23T09:50:00.000Z",
+   "ip": "10.0.1.98"
+  },
+  {
+   "id": "LOG-5044",
+   "candidateId": "CND-1007",
+   "type": "Warning",
+   "event": "Face not visible",
+   "examId": "EX-209",
+   "timestamp": "2026-11-23T09:50:00.000Z",
+   "ip": "10.0.1.97"
+  },
+  {
+   "id": "LOG-5032",
+   "candidateId": "CND-1005",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-203",
+   "timestamp": "2026-11-23T09:33:00.000Z",
+   "ip": "10.0.0.24"
+  },
+  {
+   "id": "LOG-5123",
+   "candidateId": "CND-1018",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-202",
+   "timestamp": "2026-11-23T09:04:00.000Z",
+   "ip": "10.0.16.189"
+  },
+  {
+   "id": "LOG-5131",
+   "candidateId": "CND-1020",
+   "type": "Validation",
+   "event": "Face match verified",
+   "examId": "EX-207",
+   "timestamp": "2026-11-23T08:14:00.000Z",
+   "ip": "10.0.3.39"
+  },
+  {
+   "id": "LOG-5130",
+   "candidateId": "CND-1020",
+   "type": "Warning",
+   "event": "Background voice detected",
+   "examId": "EX-201",
+   "timestamp": "2026-11-23T06:42:00.000Z",
+   "ip": "10.0.0.200"
+  },
+  {
+   "id": "LOG-5018",
+   "candidateId": "CND-1003",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-208",
+   "timestamp": "2026-11-23T06:08:00.000Z",
+   "ip": "10.0.14.194"
+  },
+  {
+   "id": "LOG-5126",
+   "candidateId": "CND-1019",
+   "type": "Validation",
+   "event": "System compatibility check passed",
+   "examId": "EX-209",
+   "timestamp": "2026-11-23T04:47:00.000Z",
+   "ip": "10.0.15.65"
+  },
+  {
+   "id": "LOG-5113",
+   "candidateId": "CND-1017",
+   "type": "Validation",
+   "event": "Room scan completed",
+   "examId": "EX-209",
+   "timestamp": "2026-11-23T04:39:00.000Z",
+   "ip": "10.0.0.246"
+  },
+  {
+   "id": "LOG-5104",
+   "candidateId": "CND-1015",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-209",
+   "timestamp": "2026-11-23T04:08:00.000Z",
+   "ip": "10.0.17.148"
+  },
+  {
+   "id": "LOG-5046",
+   "candidateId": "CND-1007",
+   "type": "Warning",
+   "event": "Copy/paste attempt blocked",
+   "examId": "EX-208",
+   "timestamp": "2026-11-23T03:26:00.000Z",
+   "ip": "10.0.5.166"
+  },
+  {
+   "id": "LOG-5036",
+   "candidateId": "CND-1006",
+   "type": "Normal",
+   "event": "Webcam connected",
+   "examId": "EX-204",
+   "timestamp": "2026-11-23T03:22:00.000Z",
+   "ip": "10.0.11.111"
+  },
+  {
+   "id": "LOG-5080",
+   "candidateId": "CND-1013",
+   "type": "Warning",
+   "event": "Window lost focus",
+   "examId": "EX-201",
+   "timestamp": "2026-11-23T03:17:00.000Z",
+   "ip": "10.0.20.26"
+  },
+  {
+   "id": "LOG-5019",
+   "candidateId": "CND-1003",
+   "type": "Warning",
+   "event": "Exited full screen",
+   "examId": "EX-209",
+   "timestamp": "2026-11-23T03:15:00.000Z",
+   "ip": "10.0.16.80"
+  },
+  {
+   "id": "LOG-5025",
+   "candidateId": "CND-1004",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-205",
+   "timestamp": "2026-11-23T02:54:00.000Z",
+   "ip": "10.0.13.15"
+  },
+  {
+   "id": "LOG-5020",
+   "candidateId": "CND-1004",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-205",
+   "timestamp": "2026-11-23T02:26:00.000Z",
+   "ip": "10.0.20.83"
+  },
+  {
+   "id": "LOG-5037",
+   "candidateId": "CND-1006",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-201",
+   "timestamp": "2026-11-23T01:46:00.000Z",
+   "ip": "10.0.3.210"
+  },
+  {
+   "id": "LOG-5070",
+   "candidateId": "CND-1011",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-202",
+   "timestamp": "2026-11-23T01:20:00.000Z",
+   "ip": "10.0.9.154"
+  },
+  {
+   "id": "LOG-5155",
+   "candidateId": "CND-1024",
+   "type": "Normal",
+   "event": "Logged out",
+   "examId": "EX-202",
+   "timestamp": "2026-11-23T01:10:00.000Z",
+   "ip": "10.0.4.86"
+  },
+  {
+   "id": "LOG-5112",
+   "candidateId": "CND-1017",
+   "type": "Normal",
+   "event": "Logged out",
+   "examId": "EX-201",
+   "timestamp": "2026-11-23T01:09:00.000Z",
+   "ip": "10.0.17.75"
+  },
+  {
+   "id": "LOG-5151",
+   "candidateId": "CND-1023",
+   "type": "Validation",
+   "event": "System compatibility check passed",
+   "examId": "EX-205",
+   "timestamp": "2026-11-22T23:49:00.000Z",
+   "ip": "10.0.19.141"
+  },
+  {
+   "id": "LOG-5136",
+   "candidateId": "CND-1020",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-209",
+   "timestamp": "2026-11-22T23:48:00.000Z",
+   "ip": "10.0.16.237"
+  },
+  {
+   "id": "LOG-5007",
+   "candidateId": "CND-1002",
+   "type": "Validation",
+   "event": "Room scan completed",
+   "examId": "EX-204",
+   "timestamp": "2026-11-22T23:28:00.000Z",
+   "ip": "10.0.16.187"
+  },
+  {
+   "id": "LOG-5042",
+   "candidateId": "CND-1007",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-203",
+   "timestamp": "2026-11-22T22:34:00.000Z",
+   "ip": "10.0.10.84"
+  },
+  {
+   "id": "LOG-5143",
+   "candidateId": "CND-1022",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-209",
+   "timestamp": "2026-11-22T22:32:00.000Z",
+   "ip": "10.0.14.140"
+  },
+  {
+   "id": "LOG-5075",
+   "candidateId": "CND-1011",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-204",
+   "timestamp": "2026-11-22T21:47:00.000Z",
+   "ip": "10.0.8.236"
+  },
+  {
+   "id": "LOG-5053",
+   "candidateId": "CND-1008",
+   "type": "Normal",
+   "event": "Microphone check passed",
+   "examId": "EX-204",
+   "timestamp": "2026-11-22T21:36:00.000Z",
+   "ip": "10.0.1.85"
+  },
+  {
+   "id": "LOG-5158",
+   "candidateId": "CND-1024",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-204",
+   "timestamp": "2026-11-22T20:55:00.000Z",
+   "ip": "10.0.17.67"
+  },
+  {
+   "id": "LOG-5115",
+   "candidateId": "CND-1017",
+   "type": "Validation",
+   "event": "ID verification failed",
+   "examId": "EX-201",
+   "timestamp": "2026-11-22T20:39:00.000Z",
+   "ip": "10.0.5.108"
+  },
+  {
+   "id": "LOG-5071",
+   "candidateId": "CND-1011",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-208",
+   "timestamp": "2026-11-22T19:49:00.000Z",
+   "ip": "10.0.14.27"
+  },
+  {
+   "id": "LOG-5043",
+   "candidateId": "CND-1007",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-203",
+   "timestamp": "2026-11-22T19:36:00.000Z",
+   "ip": "10.0.9.120"
+  },
+  {
+   "id": "LOG-5134",
+   "candidateId": "CND-1020",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-202",
+   "timestamp": "2026-11-22T19:20:00.000Z",
+   "ip": "10.0.11.135"
+  },
+  {
+   "id": "LOG-5116",
+   "candidateId": "CND-1017",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-201",
+   "timestamp": "2026-11-22T19:15:00.000Z",
+   "ip": "10.0.19.106"
+  },
+  {
+   "id": "LOG-5129",
+   "candidateId": "CND-1019",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-208",
+   "timestamp": "2026-11-22T19:02:00.000Z",
+   "ip": "10.0.0.93"
+  },
+  {
+   "id": "LOG-5069",
+   "candidateId": "CND-1010",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-209",
+   "timestamp": "2026-11-22T18:38:00.000Z",
+   "ip": "10.0.15.243"
+  },
+  {
+   "id": "LOG-5152",
+   "candidateId": "CND-1023",
+   "type": "Validation",
+   "event": "Face match verified",
+   "examId": "EX-202",
+   "timestamp": "2026-11-22T17:26:00.000Z",
+   "ip": "10.0.1.190"
+  },
+  {
+   "id": "LOG-5041",
+   "candidateId": "CND-1007",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-206",
+   "timestamp": "2026-11-22T17:19:00.000Z",
+   "ip": "10.0.1.180"
+  },
+  {
+   "id": "LOG-5137",
+   "candidateId": "CND-1021",
+   "type": "Normal",
+   "event": "Microphone check passed",
+   "examId": "EX-209",
+   "timestamp": "2026-11-22T16:52:00.000Z",
+   "ip": "10.0.6.189"
+  },
+  {
+   "id": "LOG-5079",
+   "candidateId": "CND-1012",
+   "type": "Warning",
+   "event": "Background voice detected",
+   "examId": "EX-203",
+   "timestamp": "2026-11-22T16:16:00.000Z",
+   "ip": "10.0.11.156"
+  },
+  {
+   "id": "LOG-5017",
+   "candidateId": "CND-1003",
+   "type": "Validation",
+   "event": "Room scan completed",
+   "examId": "EX-204",
+   "timestamp": "2026-11-22T15:19:00.000Z",
+   "ip": "10.0.17.8"
+  },
+  {
+   "id": "LOG-5004",
+   "candidateId": "CND-1001",
+   "type": "Warning",
+   "event": "Multiple faces detected",
+   "examId": "EX-206",
+   "timestamp": "2026-11-22T15:00:00.000Z",
+   "ip": "10.0.0.162"
+  },
+  {
+   "id": "LOG-5119",
+   "candidateId": "CND-1018",
+   "type": "Warning",
+   "event": "Tab switch detected",
+   "examId": "EX-202",
+   "timestamp": "2026-11-22T14:58:00.000Z",
+   "ip": "10.0.19.53"
+  },
+  {
+   "id": "LOG-5109",
+   "candidateId": "CND-1016",
+   "type": "Validation",
+   "event": "System compatibility check passed",
+   "examId": "EX-207",
+   "timestamp": "2026-11-22T14:35:00.000Z",
+   "ip": "10.0.6.69"
+  },
+  {
+   "id": "LOG-5059",
+   "candidateId": "CND-1009",
+   "type": "Warning",
+   "event": "Tab switch detected",
+   "examId": "EX-201",
+   "timestamp": "2026-11-22T14:25:00.000Z",
+   "ip": "10.0.2.156"
+  },
+  {
+   "id": "LOG-5022",
+   "candidateId": "CND-1004",
+   "type": "Normal",
+   "event": "Logged out",
+   "examId": "EX-204",
+   "timestamp": "2026-11-22T14:03:00.000Z",
+   "ip": "10.0.15.110"
+  },
+  {
+   "id": "LOG-5031",
+   "candidateId": "CND-1005",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-208",
+   "timestamp": "2026-11-22T13:46:00.000Z",
+   "ip": "10.0.16.250"
+  },
+  {
+   "id": "LOG-5157",
+   "candidateId": "CND-1024",
+   "type": "Normal",
+   "event": "Logged out",
+   "examId": "EX-209",
+   "timestamp": "2026-11-22T13:40:00.000Z",
+   "ip": "10.0.4.165"
+  },
+  {
+   "id": "LOG-5088",
+   "candidateId": "CND-1013",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-205",
+   "timestamp": "2026-11-22T13:19:00.000Z",
+   "ip": "10.0.5.231"
+  },
+  {
+   "id": "LOG-5005",
+   "candidateId": "CND-1001",
+   "type": "Warning",
+   "event": "Copy/paste attempt blocked",
+   "examId": "EX-202",
+   "timestamp": "2026-11-22T13:02:00.000Z",
+   "ip": "10.0.4.162"
+  },
+  {
+   "id": "LOG-5142",
+   "candidateId": "CND-1022",
+   "type": "Warning",
+   "event": "Window lost focus",
+   "examId": "EX-209",
+   "timestamp": "2026-11-22T12:57:00.000Z",
+   "ip": "10.0.14.21"
+  },
+  {
+   "id": "LOG-5014",
+   "candidateId": "CND-1002",
+   "type": "Warning",
+   "event": "Copy/paste attempt blocked",
+   "examId": "EX-204",
+   "timestamp": "2026-11-22T12:39:00.000Z",
+   "ip": "10.0.8.184"
+  },
+  {
+   "id": "LOG-5156",
+   "candidateId": "CND-1024",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-209",
+   "timestamp": "2026-11-22T11:54:00.000Z",
+   "ip": "10.0.20.62"
+  },
+  {
+   "id": "LOG-5139",
+   "candidateId": "CND-1021",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-205",
+   "timestamp": "2026-11-22T11:10:00.000Z",
+   "ip": "10.0.16.219"
+  },
+  {
+   "id": "LOG-5098",
+   "candidateId": "CND-1015",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-205",
+   "timestamp": "2026-11-22T10:25:00.000Z",
+   "ip": "10.0.17.30"
+  },
+  {
+   "id": "LOG-5040",
+   "candidateId": "CND-1006",
+   "type": "Validation",
+   "event": "Room scan completed",
+   "examId": "EX-201",
+   "timestamp": "2026-11-22T09:39:00.000Z",
+   "ip": "10.0.0.196"
+  },
+  {
+   "id": "LOG-5067",
+   "candidateId": "CND-1010",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-202",
+   "timestamp": "2026-11-22T09:24:00.000Z",
+   "ip": "10.0.0.174"
+  },
+  {
+   "id": "LOG-5087",
+   "candidateId": "CND-1013",
+   "type": "Normal",
+   "event": "Microphone check passed",
+   "examId": "EX-205",
+   "timestamp": "2026-11-22T08:55:00.000Z",
+   "ip": "10.0.20.98"
+  },
+  {
+   "id": "LOG-5141",
+   "candidateId": "CND-1022",
+   "type": "Validation",
+   "event": "System compatibility check passed",
+   "examId": "EX-208",
+   "timestamp": "2026-11-22T08:30:00.000Z",
+   "ip": "10.0.12.86"
+  },
+  {
+   "id": "LOG-5016",
+   "candidateId": "CND-1003",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-209",
+   "timestamp": "2026-11-22T08:29:00.000Z",
+   "ip": "10.0.11.227"
+  },
+  {
+   "id": "LOG-5010",
+   "candidateId": "CND-1002",
+   "type": "Warning",
+   "event": "Tab switch detected",
+   "examId": "EX-204",
+   "timestamp": "2026-11-22T07:08:00.000Z",
+   "ip": "10.0.17.44"
+  },
+  {
+   "id": "LOG-5110",
+   "candidateId": "CND-1016",
+   "type": "Validation",
+   "event": "System compatibility check passed",
+   "examId": "EX-207",
+   "timestamp": "2026-11-22T07:08:00.000Z",
+   "ip": "10.0.18.55"
+  },
+  {
+   "id": "LOG-5034",
+   "candidateId": "CND-1005",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-201",
+   "timestamp": "2026-11-22T06:21:00.000Z",
+   "ip": "10.0.6.43"
+  },
+  {
+   "id": "LOG-5102",
+   "candidateId": "CND-1015",
+   "type": "Warning",
+   "event": "Exited full screen",
+   "examId": "EX-209",
+   "timestamp": "2026-11-22T04:38:00.000Z",
+   "ip": "10.0.20.24"
+  },
+  {
+   "id": "LOG-5085",
+   "candidateId": "CND-1013",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-201",
+   "timestamp": "2026-11-22T03:23:00.000Z",
+   "ip": "10.0.19.145"
+  },
+  {
+   "id": "LOG-5056",
+   "candidateId": "CND-1009",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-201",
+   "timestamp": "2026-11-22T03:13:00.000Z",
+   "ip": "10.0.20.106"
+  },
+  {
+   "id": "LOG-5038",
+   "candidateId": "CND-1006",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-207",
+   "timestamp": "2026-11-22T02:57:00.000Z",
+   "ip": "10.0.11.71"
+  },
+  {
+   "id": "LOG-5138",
+   "candidateId": "CND-1021",
+   "type": "Warning",
+   "event": "Copy/paste attempt blocked",
+   "examId": "EX-208",
+   "timestamp": "2026-11-22T02:41:00.000Z",
+   "ip": "10.0.13.19"
+  },
+  {
+   "id": "LOG-5107",
+   "candidateId": "CND-1016",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-205",
+   "timestamp": "2026-11-22T01:22:00.000Z",
+   "ip": "10.0.8.6"
+  },
+  {
+   "id": "LOG-5076",
+   "candidateId": "CND-1012",
+   "type": "Normal",
+   "event": "Webcam connected",
+   "examId": "EX-202",
+   "timestamp": "2026-11-22T00:47:00.000Z",
+   "ip": "10.0.14.45"
+  },
+  {
+   "id": "LOG-5033",
+   "candidateId": "CND-1005",
+   "type": "Normal",
+   "event": "Webcam connected",
+   "examId": "EX-201",
+   "timestamp": "2026-11-22T00:44:00.000Z",
+   "ip": "10.0.0.184"
+  },
+  {
+   "id": "LOG-5133",
+   "candidateId": "CND-1020",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-201",
+   "timestamp": "2026-11-22T00:29:00.000Z",
+   "ip": "10.0.11.118"
+  },
+  {
+   "id": "LOG-5140",
+   "candidateId": "CND-1021",
+   "type": "Validation",
+   "event": "ID verification failed",
+   "examId": "EX-206",
+   "timestamp": "2026-11-22T00:08:00.000Z",
+   "ip": "10.0.13.124"
+  },
+  {
+   "id": "LOG-5081",
+   "candidateId": "CND-1013",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-201",
+   "timestamp": "2026-11-21T21:24:00.000Z",
+   "ip": "10.0.4.136"
+  },
+  {
+   "id": "LOG-5021",
+   "candidateId": "CND-1004",
+   "type": "Validation",
+   "event": "Browser lockdown verified",
+   "examId": "EX-204",
+   "timestamp": "2026-11-21T21:21:00.000Z",
+   "ip": "10.0.15.135"
+  },
+  {
+   "id": "LOG-5124",
+   "candidateId": "CND-1018",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-202",
+   "timestamp": "2026-11-21T21:04:00.000Z",
+   "ip": "10.0.20.38"
+  },
+  {
+   "id": "LOG-5008",
+   "candidateId": "CND-1002",
+   "type": "Warning",
+   "event": "Face not visible",
+   "examId": "EX-204",
+   "timestamp": "2026-11-21T21:03:00.000Z",
+   "ip": "10.0.2.99"
+  },
+  {
+   "id": "LOG-5114",
+   "candidateId": "CND-1017",
+   "type": "Validation",
+   "event": "Browser lockdown verified",
+   "examId": "EX-209",
+   "timestamp": "2026-11-21T20:55:00.000Z",
+   "ip": "10.0.19.163"
+  },
+  {
+   "id": "LOG-5048",
+   "candidateId": "CND-1008",
+   "type": "Normal",
+   "event": "Webcam connected",
+   "examId": "EX-204",
+   "timestamp": "2026-11-21T20:43:00.000Z",
+   "ip": "10.0.7.45"
+  },
+  {
+   "id": "LOG-5147",
+   "candidateId": "CND-1022",
+   "type": "Warning",
+   "event": "Exited full screen",
+   "examId": "EX-206",
+   "timestamp": "2026-11-21T20:31:00.000Z",
+   "ip": "10.0.6.25"
+  },
+  {
+   "id": "LOG-5003",
+   "candidateId": "CND-1001",
+   "type": "Validation",
+   "event": "Browser lockdown verified",
+   "examId": "EX-202",
+   "timestamp": "2026-11-21T20:20:00.000Z",
+   "ip": "10.0.5.138"
+  },
+  {
+   "id": "LOG-5023",
+   "candidateId": "CND-1004",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-209",
+   "timestamp": "2026-11-21T20:04:00.000Z",
+   "ip": "10.0.13.36"
+  },
+  {
+   "id": "LOG-5145",
+   "candidateId": "CND-1022",
+   "type": "Warning",
+   "event": "Exited full screen",
+   "examId": "EX-206",
+   "timestamp": "2026-11-21T19:03:00.000Z",
+   "ip": "10.0.4.174"
+  },
+  {
+   "id": "LOG-5149",
+   "candidateId": "CND-1023",
+   "type": "Validation",
+   "event": "Face match verified",
+   "examId": "EX-201",
+   "timestamp": "2026-11-21T17:21:00.000Z",
+   "ip": "10.0.14.241"
+  },
+  {
+   "id": "LOG-5105",
+   "candidateId": "CND-1016",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-205",
+   "timestamp": "2026-11-21T16:10:00.000Z",
+   "ip": "10.0.15.102"
+  },
+  {
+   "id": "LOG-5072",
+   "candidateId": "CND-1011",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-208",
+   "timestamp": "2026-11-21T15:28:00.000Z",
+   "ip": "10.0.15.66"
+  },
+  {
+   "id": "LOG-5106",
+   "candidateId": "CND-1016",
+   "type": "Warning",
+   "event": "Window lost focus",
+   "examId": "EX-207",
+   "timestamp": "2026-11-21T15:23:00.000Z",
+   "ip": "10.0.18.112"
+  },
+  {
+   "id": "LOG-5160",
+   "candidateId": "CND-1024",
+   "type": "Warning",
+   "event": "Copy/paste attempt blocked",
+   "examId": "EX-202",
+   "timestamp": "2026-11-21T15:02:00.000Z",
+   "ip": "10.0.16.195"
+  },
+  {
+   "id": "LOG-5049",
+   "candidateId": "CND-1008",
+   "type": "Normal",
+   "event": "Submitted exam",
+   "examId": "EX-204",
+   "timestamp": "2026-11-21T14:49:00.000Z",
+   "ip": "10.0.3.161"
+  },
+  {
+   "id": "LOG-5058",
+   "candidateId": "CND-1009",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-201",
+   "timestamp": "2026-11-21T14:08:00.000Z",
+   "ip": "10.0.6.233"
+  },
+  {
+   "id": "LOG-5099",
+   "candidateId": "CND-1015",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-201",
+   "timestamp": "2026-11-21T13:49:00.000Z",
+   "ip": "10.0.10.35"
+  },
+  {
+   "id": "LOG-5153",
+   "candidateId": "CND-1023",
+   "type": "Validation",
+   "event": "ID verification passed",
+   "examId": "EX-205",
+   "timestamp": "2026-11-21T13:47:00.000Z",
+   "ip": "10.0.12.44"
+  },
+  {
+   "id": "LOG-5006",
+   "candidateId": "CND-1001",
+   "type": "Normal",
+   "event": "Navigated to next question",
+   "examId": "EX-206",
+   "timestamp": "2026-11-21T13:18:00.000Z",
+   "ip": "10.0.4.28"
+  },
+  {
+   "id": "LOG-5132",
+   "candidateId": "CND-1020",
+   "type": "Normal",
+   "event": "Answered question",
+   "examId": "EX-209",
+   "timestamp": "2026-11-21T12:44:00.000Z",
+   "ip": "10.0.3.174"
+  },
+  {
+   "id": "LOG-5028",
+   "candidateId": "CND-1005",
+   "type": "Warning",
+   "event": "Background voice detected",
+   "examId": "EX-203",
+   "timestamp": "2026-11-21T12:32:00.000Z",
+   "ip": "10.0.12.8"
+  },
+  {
+   "id": "LOG-5100",
+   "candidateId": "CND-1015",
+   "type": "Warning",
+   "event": "Copy/paste attempt blocked",
+   "examId": "EX-205",
+   "timestamp": "2026-11-21T12:10:00.000Z",
+   "ip": "10.0.4.98"
+  },
+  {
+   "id": "LOG-5029",
+   "candidateId": "CND-1005",
+   "type": "Normal",
+   "event": "Logged in",
+   "examId": "EX-201",
+   "timestamp": "2026-11-21T11:47:00.000Z",
+   "ip": "10.0.5.194"
+  },
+  {
+   "id": "LOG-5026",
+   "candidateId": "CND-1004",
+   "type": "Validation",
+   "event": "Browser lockdown verified",
+   "examId": "EX-204",
+   "timestamp": "2026-11-21T10:48:00.000Z",
+   "ip": "10.0.14.84"
+  },
+  {
+   "id": "LOG-5051",
+   "candidateId": "CND-1008",
+   "type": "Validation",
+   "event": "Room scan completed",
+   "examId": "EX-202",
+   "timestamp": "2026-11-21T10:30:00.000Z",
+   "ip": "10.0.4.241"
+  },
+  {
+   "id": "LOG-5111",
+   "candidateId": "CND-1017",
+   "type": "Normal",
+   "event": "Webcam connected",
+   "examId": "EX-209",
+   "timestamp": "2026-11-21T10:07:00.000Z",
+   "ip": "10.0.6.131"
+  },
+  {
+   "id": "LOG-5135",
+   "candidateId": "CND-1020",
+   "type": "Normal",
+   "event": "Started exam",
+   "examId": "EX-202",
+   "timestamp": "2026-11-21T10:04:00.000Z",
+   "ip": "10.0.7.4"
+  }
+ ],
+ "settings": {
+  "organization": {
+   "name": "Acme Talent Assessments",
+   "companyUrl": "https://www.acme-assessments.example",
+   "logoUrl": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Cpath d='M32 14l16 6v12c0 10-7 16-16 19-9-3-16-9-16-19V20z' fill='white'/%3E%3Cpath d='M26 32l5 5 9-10' stroke='%232563eb' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E",
+   "supportEmail": "support@acme-assessments.example",
+   "timezone": "Asia/Kolkata"
+  },
+  "exam": {
+   "defaultDuration": 60,
+   "passMark": 60,
+   "maxAttempts": 1,
+   "shuffleQuestions": true,
+   "shuffleOptions": true,
+   "showResultsToCandidate": false,
+   "negativeMarking": false
+  },
+  "security": {
+   "webcamRequired": true,
+   "microphoneRequired": true,
+   "screenRecording": true,
+   "browserLockdown": true,
+   "idVerification": true,
+   "maxWarningsBeforeFlag": 3,
+   "autoSubmitOnFlag": false
+  },
+  "notifications": {
+   "emailOnExamScheduled": true,
+   "emailOnResultPublished": true,
+   "alertOnCheatingFlag": true,
+   "dailySummary": false,
+   "reminderHoursBefore": 24
+  }
+ }
+}

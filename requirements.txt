@@ -1,0 +1,4 @@
+# Oversee server (Python 3.11+). Install with:  pip install -r requirements.txt
+fastapi==0.165.0
+uvicorn[standard]==0.54.0
+httpx==0.28.1      # used by: python -m server.check
