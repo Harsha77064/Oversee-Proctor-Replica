@@ -49,6 +49,9 @@ services:
       - --use-auth-secret
       - --static-auth-secret=${TURN_SECRET}
       - --realm=${DOMAIN}
+      # The address candidates reach the relay on. Behind NAT (AWS EC2, Google Cloud, Azure)
+      # this is "<public IP>/<private IP>"; elsewhere just the public IP. See DEPLOY.md.
+      - --external-ip=${TURN_EXTERNAL_IP:?Set TURN_EXTERNAL_IP in .env (see DEPLOY.md, step 4)}
       - --no-cli
       - --no-tls
       - --no-dtls

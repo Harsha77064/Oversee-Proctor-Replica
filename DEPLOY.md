@@ -14,9 +14,12 @@ One server runs three containers (see `docker-compose.yml`):
 ## What you need
 
 - A Linux server (Ubuntu 22.04/24.04) with a **public IP address**.
-  2 vCPU / 2 GB RAM is plenty to start, e.g. DigitalOcean, AWS Lightsail, Hetzner, Azure or GCP.
+  2 vCPU / 2 GB RAM is plenty to start (at least 2 GB: building the app needs it), e.g. AWS EC2
+  `t3.small`, AWS Lightsail, DigitalOcean, Hetzner, Azure or GCP. **On AWS, follow
+  [Deploying on AWS EC2](#deploying-on-aws-ec2) below for the server, firewall and IP steps.**
 - A **domain or subdomain**, e.g. `exams.yourcompany.com`.
-- Optional: SMTP details (SendGrid, Amazon SES, Mailgun, Gmail Workspace…) to email invitations automatically.
+- Optional: email for invitations. Easiest: after setup, open **Settings → Email** in the app and
+  connect Gmail (App Password), Outlook, Amazon SES or any SMTP server; or put `SMTP_*` in `.env`.
 
 ## 1. Point your domain at the server
 
@@ -48,7 +51,7 @@ sudo usermod -aG docker $USER   # then log out and back in
 ## 4. Get the code and configure it
 
 ```bash
-git clone https://github.com/Harsha77064/proctor-Replica.git oversee
+git clone https://github.com/Harsha77064/Oversee-Proctor-Replica.git oversee
 cd oversee
 cp .env.example .env
 nano .env
@@ -59,7 +62,21 @@ Set at least:
 - `DOMAIN` – your domain from step 1
 - `ACME_EMAIL` – your email, for certificate expiry notices
 - `TURN_SECRET` – a long random value: run `openssl rand -hex 32` and paste the output
-- `SMTP_*` – optional, to email invitations
+- `TURN_EXTERNAL_IP` – the server's public IP for the video relay. Fill it in automatically:
+  - **AWS EC2, Google Cloud, Azure** (public IP is NAT-ed, value is `public/private`):
+    ```bash
+    sed -i "s|^TURN_EXTERNAL_IP=.*|TURN_EXTERNAL_IP=$(curl -s https://checkip.amazonaws.com)/$(hostname -I | awk '{print $1}')|" .env
+    ```
+  - **Other providers** (public IP on the machine itself):
+    ```bash
+    sed -i "s|^TURN_EXTERNAL_IP=.*|TURN_EXTERNAL_IP=$(curl -s https://checkip.amazonaws.com)|" .env
+    ```
+  Check it with `grep TURN_EXTERNAL_IP .env`. On AWS, attach the Elastic IP *before* running this.
+- `SMTP_*` – optional; you can set email up in the app instead (Settings → Email)
+
+If the repository is private, `git clone` asks for a username and password: use your GitHub
+username and a **personal access token** (GitHub → Settings → Developer settings → Personal access
+tokens → Fine-grained, read-only access to this repository), not your GitHub password.
 
 ## 5. Start it
 
@@ -76,11 +93,12 @@ The first start takes a few minutes. Then open `https://your-domain`. You'll see
 1. **Question Bank**: create a bank and add questions.
 2. **Dashboard**: add candidates.
 3. **Exams**: schedule an exam, then assign candidates to it (Dashboard → Assign Exam).
-4. **Exams → Invitations**: create links. Each candidate gets a personal link and an
-   access code. With SMTP set up they're emailed; otherwise copy them and send them yourself.
-5. At exam time click **Start Now**. Candidates open their link, enter their code, pass the
-   camera check and start. Watch them under **Live Monitoring**.
-6. Add proctors under **Users** (role: Proctor). They can monitor, record, warn and flag,
+4. **Settings → Email**: connect Gmail (or another provider) and send yourself a test email.
+5. **Exams → Invitations**: tick candidates and **Create and email**. Each candidate gets a personal
+   **Test ID** (and link). Without email set up, copy them and send them yourself.
+6. At exam time click **Start Now**. Candidates go to `https://your-domain/exam`, enter their
+   Test ID, pass the camera check and start. Watch them under **Live Monitoring**.
+7. Add proctors under **Users** (role: Proctor). They can monitor, record, warn and flag,
    but cannot change exams or see answer keys.
 
 ## Everyday operations
@@ -102,6 +120,36 @@ docker compose exec app python -m server.cli backup
 docker run --rm -v oversee_oversee-data:/data -v "$PWD":/out alpine tar czf /out/oversee-data.tgz -C /data .
 ```
 
+## Deploying on AWS EC2
+
+1. **Launch the server**: EC2 → *Launch instance* → **Ubuntu Server 24.04 LTS**, type **t3.small**
+   (t3.micro has too little memory to build), a new key pair (`.pem`, keep it safe), 20 GB+ storage.
+2. **Security group** (inbound rules):
+
+   | Type | Port | Source |
+   |---|---|---|
+   | SSH | 22 | **My IP** |
+   | HTTP | 80 | Anywhere |
+   | HTTPS | 443 | Anywhere |
+   | Custom UDP | 443 | Anywhere (optional, HTTP/3) |
+   | Custom TCP | 3478 | Anywhere |
+   | Custom UDP | 3478 | Anywhere |
+   | Custom UDP | 49160–49200 | Anywhere |
+
+   Ubuntu on EC2 has `ufw` off by default, so the security group is the firewall.
+3. **Fixed IP**: EC2 → *Elastic IPs* → *Allocate* → *Associate* with the instance.
+4. **DNS**: A record `exams.yourcompany.com` → the Elastic IP (Route 53 or your registrar).
+5. **Connect** from Windows PowerShell:
+   ```powershell
+   ssh -i C:\path\to\oversee-key.pem ubuntu@<elastic-ip>
+   ```
+   If it says *UNPROTECTED PRIVATE KEY FILE*, run
+   `icacls C:\path\to\oversee-key.pem /inheritance:r /grant:r "$($env:USERNAME):(R)"` and try again.
+6. Continue with steps 3–5 above (Docker, code, `.env` including **`TURN_EXTERNAL_IP`** with the
+   AWS command, then `docker compose up -d --build`).
+
+Outgoing email on port 587 (Gmail, Outlook) works from EC2; AWS only restricts port 25.
+
 ## Sizing notes
 
 - Camera video goes **directly** between the candidate and the proctor's browser when the
@@ -117,7 +165,7 @@ docker run --rm -v oversee_oversee-data:/data -v "$PWD":/out alpine tar czf /out
 - [x] HTTPS everywhere (Caddy), HSTS, strict Content-Security-Policy
 - [x] Passwords hashed with scrypt; sign-in rate limited; sessions in HttpOnly, Secure, SameSite cookies
 - [x] Admin vs proctor roles enforced on the server; proctors never receive answer keys
-- [x] Candidates sign in with a personal link + access code; 5 wrong codes lock the invitation
+- [x] Candidates sign in with a personal, unique, random Test ID; guessing is rate-limited and logged
 - [x] Questions are sent without answers; timing and scoring happen on the server
 - [x] Recordings only downloadable by signed-in staff
 - [x] TURN relay uses short-lived credentials and refuses to relay into private networks
