@@ -101,6 +101,7 @@ export default function Settings() {
             <Toggle label="Screen recording" checked={draft.screenRecording} onChange={(v) => set('screenRecording', v)} />
             <Toggle label="Browser lockdown" description="Block tab switching, copy/paste and right-click" checked={draft.browserLockdown} onChange={(v) => set('browserLockdown', v)} />
             <Toggle label="ID verification" description="Verify government ID before the exam starts" checked={draft.idVerification} onChange={(v) => set('idVerification', v)} />
+            <Toggle label="Face detection" description="Warn when the candidate's face is missing or more than one person is on camera (runs in the candidate's browser)" checked={draft.faceDetection ?? true} onChange={(v) => set('faceDetection', v)} />
             <Toggle label="Auto-submit when flagged" description="Submit the exam automatically once the warning limit is reached" checked={draft.autoSubmitOnFlag} onChange={(v) => set('autoSubmitOnFlag', v)} />
             <Field label="Warnings before cheating flag">
               <input className="input" type="number" min="1" max="20" value={draft.maxWarningsBeforeFlag} onChange={num('maxWarningsBeforeFlag')} />

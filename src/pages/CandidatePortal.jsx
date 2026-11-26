@@ -7,11 +7,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Camera, Mic, Wifi, Maximize, CheckCircle2, XCircle, Loader2, ShieldCheck, ArrowRight, ArrowLeft, Clock, AlertTriangle,
-  MessageSquare, Ban, Send, Eye, KeyRound, Flag as FlagIcon, Hourglass, CloudOff, Cloud, Link2Off, LogIn,
+  MessageSquare, Ban, Send, Eye, KeyRound, Flag as FlagIcon, Hourglass, CloudOff, Cloud, Link2Off, LogIn, CalendarX2, ScanFace,
 } from 'lucide-react';
 import { api } from '../api.js';
 import { LogoMark } from '../components/UI.jsx';
 import { SignalingClient, getIceConfig, makeQueue } from '../live/signaling.js';
+import { countFaces, loadFaceDetector } from '../live/faceCheck.js';
 import { FormError } from './Login.jsx';
 
 const fmt = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
@@ -40,23 +41,27 @@ export default function CandidatePortal() {
   }, [token]);
 
   const applyMe = useCallback((data) => {
-    setMe(data);
     const a = data.attempt;
-    if (a?.status === 'Submitted') setPhase('done');
+    // A status reply that was already on its way when the exam started is out of date: ignore it.
+    if (phaseRef.current === 'exam' && !a) return;
+    setMe(data);
+    if (!a && data.exam?.status === 'Completed') setPhase('ended');
+    else if (a?.status === 'Submitted') setPhase('done');
     else if (a?.status === 'Terminated') setPhase('terminated');
     else setPhase((p) => (p === 'exam' && a?.status === 'InProgress' ? 'exam' : 'check'));
   }, []);
 
-  // Restore an existing session, otherwise look up the invitation link.
+  // Opened from an invitation link: use that link (signing in replaces any older session).
+  // Otherwise restore this browser's session, or show the Test ID sign-in.
   useEffect(() => {
     (async () => {
-      try {
-        applyMe(await api('/candidate/me', { quiet401: true }));
-        return;
-      } catch {
-        /* not signed in yet */
-      }
       if (!token) {
+        try {
+          applyMe(await api('/candidate/me', { quiet401: true }));
+          return;
+        } catch {
+          /* not signed in yet */
+        }
         api('/candidate/portal').then(setPortal, () => {});
         return setPhase('signin');
       }
@@ -69,6 +74,23 @@ export default function CandidatePortal() {
       }
     })();
   }, [token, applyMe]);
+
+  const switchTestId = useCallback(async () => {
+    const sig = sigRef.current;
+    sigRef.current = null;
+    sig?.close();
+    pcs.current.forEach(({ pc }) => pc?.close());
+    pcs.current.clear();
+    streamRef.current?.getTracks().forEach((t) => t.stop());
+    streamRef.current = null;
+    setStream(null);
+    await api('/candidate/logout', { method: 'POST' }).catch(() => {});
+    setMe(null);
+    setInvite(null);
+    setMessages([]);
+    api('/candidate/portal').then(setPortal, () => {});
+    setPhase('signin');
+  }, []);
 
   const stopEverything = useCallback(() => {
     pcs.current.forEach(({ pc }) => pc?.close());
@@ -205,6 +227,7 @@ export default function CandidatePortal() {
             me={me}
             sigStatus={sigStatus}
             onRefresh={async () => applyMe(await api('/candidate/me'))}
+            onSwitch={switchTestId}
             onStream={(media) => {
               streamRef.current = media;
               setStream(media);
@@ -213,7 +236,8 @@ export default function CandidatePortal() {
             onStart={async () => {
               const data = await api('/candidate/start', { method: 'POST' });
               try {
-                await document.documentElement.requestFullscreen?.();
+                // Don't wait more than 1.5 s: some browsers never answer the full-screen request.
+                await Promise.race([document.documentElement.requestFullscreen?.(), new Promise((r) => setTimeout(r, 1500))]);
               } catch {
                 /* full screen refused; reported once the exam starts */
               }
@@ -243,7 +267,9 @@ export default function CandidatePortal() {
                 ? `You answered ${me.attempt.result.correct} of ${me.attempt.result.total} questions correctly (${me.attempt.result.score}%).`
                 : 'Your answers have been submitted. Your organization will share your result.'
             }
-          />
+          >
+            <button className="btn" onClick={switchTestId}><LogIn size={15} /> Take another exam</button>
+          </Finished>
         )}
         {phase === 'terminated' && (
           <Finished
@@ -251,7 +277,20 @@ export default function CandidatePortal() {
             tone="red"
             title="Your exam was ended by the proctor"
             text={me?.attempt?.reason || 'Please contact your organization for more information.'}
-          />
+          >
+            <button className="btn" onClick={switchTestId}><LogIn size={15} /> Take another exam</button>
+          </Finished>
+        )}
+        {phase === 'ended' && (
+          <Finished
+            icon={CalendarX2}
+            tone="gray"
+            title="This exam has ended"
+            text={`${me?.exam?.title || 'This exam'} is over, so it can no longer be started. If you have another exam, enter its Test ID.`}
+            cameraNote={false}
+          >
+            <button className="btn primary" onClick={switchTestId}><LogIn size={15} /> Use a different Test ID</button>
+          </Finished>
         )}
       </main>
 
@@ -399,7 +438,7 @@ function CodeEntry({ invite, onSubmit }) {
 }
 
 // ---------------------------------------------------------------------------
-function SystemCheck({ me, sigStatus, onStream, onStart, onRefresh }) {
+function SystemCheck({ me, sigStatus, onStream, onStart, onRefresh, onSwitch }) {
   const videoRef = useRef(null);
   const [cam, setCam] = useState('pending'); // pending | ok | error
   const [camError, setCamError] = useState('');
@@ -410,13 +449,41 @@ function SystemCheck({ me, sigStatus, onStream, onStart, onRefresh }) {
   const [error, setError] = useState('');
   const fsSupported = !!document.documentElement.requestFullscreen;
   const examOpen = me.exam.status === 'Live';
+  const faceOn = me.rules.faceDetection !== false;
+  const [face, setFace] = useState('pending'); // pending | ok | none | multi | unavailable
 
-  // Waiting for the exam to open: check again every 10 seconds.
+  // Face check on the preview: exactly one face must be visible before starting.
   useEffect(() => {
-    if (examOpen) return undefined;
+    if (!faceOn || cam !== 'ok') return undefined;
+    let stopped = false;
+    let timer;
+    loadFaceDetector().then(
+      (detector) => {
+        if (stopped) return;
+        timer = setInterval(() => {
+          let n;
+          try {
+            n = countFaces(detector, videoRef.current);
+          } catch {
+            return;
+          }
+          if (n !== null) setFace(n === 0 ? 'none' : n === 1 ? 'ok' : 'multi');
+        }, 700);
+      },
+      () => !stopped && setFace('unavailable'),
+    );
+    return () => {
+      stopped = true;
+      clearInterval(timer);
+    };
+  }, [faceOn, cam]);
+
+  // Check the exam's status every 10 seconds: notices when it opens, and when it is ended
+  // before this candidate starts (they are then shown "This exam has ended").
+  useEffect(() => {
     const t = setInterval(() => onRefresh().catch(() => {}), 10000);
     return () => clearInterval(t);
-  }, [examOpen, onRefresh]);
+  }, [onRefresh]);
 
   useEffect(() => {
     let cancelled = false;
@@ -475,7 +542,19 @@ function SystemCheck({ me, sigStatus, onStream, onStart, onRefresh }) {
     { icon: Wifi, label: 'Proctor connection', state: sigStatus === 'online' ? 'ok' : cam === 'error' ? 'error' : 'pending', detail: sigStatus === 'online' ? 'A proctor can now see your camera' : 'Connecting to the proctoring server…' },
     { icon: Maximize, label: 'Full screen', state: fsSupported ? 'ok' : 'error', detail: fsSupported ? 'The exam opens in full screen' : 'Not supported; leaving the exam window will be reported' },
   ];
-  const ready = cam === 'ok' && sigStatus === 'online' && consent && examOpen;
+  if (faceOn) {
+    const FACE = {
+      pending: ['pending', 'Starting the face check…'],
+      ok: ['ok', 'Your face is clearly visible'],
+      none: ['error', 'No face found. Sit facing the camera in good light.'],
+      multi: ['error', 'More than one person is visible. Only you may be on camera.'],
+      unavailable: ['ok', "Face check isn't supported on this device; your proctor will be told"],
+    };
+    const [state, detail] = cam === 'error' ? ['error', 'Needs the camera'] : FACE[face];
+    checks.splice(1, 0, { icon: ScanFace, label: 'Face', state, detail });
+  }
+  const faceReady = !faceOn || face === 'ok' || face === 'unavailable';
+  const ready = cam === 'ok' && sigStatus === 'online' && consent && examOpen && faceReady;
 
   return (
     <div className="portal-card wide">
@@ -547,6 +626,12 @@ function SystemCheck({ me, sigStatus, onStream, onStart, onRefresh }) {
               {busy && <Loader2 size={16} className="spin" />} {resuming ? 'Resume exam' : 'Start exam'} <ArrowRight size={16} />
             </button>
           </div>
+          {!resuming && (
+            <p className="muted small signin-switch">
+              Signed in for <b>{me.exam.title}</b>. Not your exam?{' '}
+              <button type="button" className="link-btn" onClick={onSwitch}>Use a different Test ID</button>
+            </p>
+          )}
         </div>
       </div>
     </div>
@@ -554,7 +639,7 @@ function SystemCheck({ me, sigStatus, onStream, onStart, onRefresh }) {
 }
 
 // ---------------------------------------------------------------------------
-function useProctoring({ stream, report, lockdown, onFullscreenChange }) {
+function useProctoring({ stream, report, lockdown, faceDetection, onFullscreenChange }) {
   useEffect(() => {
     const last = {};
     const once = (key, type, text, gap = 4000) => {
@@ -617,6 +702,57 @@ function useProctoring({ stream, report, lockdown, onFullscreenChange }) {
       } else if (darkCount === 0) darkReported = false;
     }, 1500);
 
+    // Face check: no face for 5 s, or more than one face for 3 s, is a warning (once per episode).
+    // A covered camera is already reported above, so it isn't counted again as "face not visible".
+    let disposed = false;
+    let faceTimer;
+    if (faceDetection) {
+      loadFaceDetector().then(
+        (detector) => {
+          if (disposed) return;
+          let missingSince = null;
+          let missingReported = false;
+          let multiSince = null;
+          let multiReported = false;
+          faceTimer = setInterval(() => {
+            if (document.hidden) return; // tab switches are reported separately
+            let n;
+            try {
+              n = countFaces(detector, probe);
+            } catch {
+              return;
+            }
+            if (n === null) return;
+            const now = Date.now();
+            if (n === 0) {
+              if (darkCount === 0) {
+                missingSince ??= now;
+                if (!missingReported && now - missingSince >= 5000) {
+                  missingReported = true;
+                  report('Warning', 'Face not visible to the camera');
+                }
+              }
+            } else {
+              if (missingReported) report('Normal', 'Face visible again');
+              missingSince = null;
+              missingReported = false;
+            }
+            if (n >= 2) {
+              multiSince ??= now;
+              if (!multiReported && now - multiSince >= 3000) {
+                multiReported = true;
+                report('Warning', `Multiple faces detected (${n} people on camera)`);
+              }
+            } else {
+              multiSince = null;
+              multiReported = false;
+            }
+          }, 1000);
+        },
+        () => !disposed && report('Normal', 'Face detection could not start on this device'),
+      );
+    }
+
     return () => {
       document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('blur', onBlur);
@@ -626,9 +762,11 @@ function useProctoring({ stream, report, lockdown, onFullscreenChange }) {
       window.removeEventListener('keyup', onKey);
       video?.removeEventListener('ended', onEnded);
       clearInterval(timer);
+      disposed = true;
+      clearInterval(faceTimer);
       probe.srcObject = null;
     };
-  }, [stream, report, lockdown, onFullscreenChange]);
+  }, [stream, report, lockdown, faceDetection, onFullscreenChange]);
 }
 
 function Exam({ me, stream, report, progress, onFinished }) {
@@ -707,7 +845,7 @@ function Exam({ me, stream, report, progress, onFinished }) {
   }, [answered, current]);
 
   const onFullscreenChange = useCallback((fs) => setFullscreen(fs), []);
-  useProctoring({ stream, report, lockdown: me.rules.browserLockdown, onFullscreenChange });
+  useProctoring({ stream, report, lockdown: me.rules.browserLockdown, faceDetection: me.rules.faceDetection !== false, onFullscreenChange });
 
   const q = questions[current];
   const low = secondsLeft <= 300;

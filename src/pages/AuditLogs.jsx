@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useStore, byId, fmtDateTime, timeAgo } from '../context/StoreContext.jsx';
-import { ScrollText, Info, AlertTriangle, ShieldCheck, Download, Users, ListTree } from 'lucide-react';
+import { ScrollText, Info, AlertTriangle, ShieldCheck, Download, Users, ListTree, UserCog, Cpu } from 'lucide-react';
 import { PageHeader, Badge, Empty, Tabs, StatCard, Person, SearchInput, CountPill } from '../components/UI.jsx';
 
 export default function AuditLogs() {
@@ -27,18 +27,19 @@ export default function AuditLogs() {
   );
 
   const q = search.toLowerCase();
+  const candidateName = (l) => (l.candidateId ? byId(candidates, l.candidateId)?.name || l.candidateId : '');
   const events = auditLogs.filter(
     (l) =>
       (type === 'All' || l.type === type) &&
-      `${byId(candidates, l.candidateId)?.name} ${l.candidateId} ${l.event}`.toLowerCase().includes(q)
+      `${candidateName(l)} ${l.candidateId || ''} ${l.actor || ''} ${l.event} ${byId(exams, l.examId)?.title || ''}`.toLowerCase().includes(q)
   );
   const summaryRows = summary.filter((s) => `${s.candidate.name} ${s.candidate.id}`.toLowerCase().includes(q));
 
   const exportCsv = () => {
-    const header = 'Log ID,Timestamp,Candidate ID,Candidate,Type,Event,Exam,IP\n';
+    const header = 'Log ID,Timestamp,Candidate ID,Candidate,Done by,Type,Event,Exam,IP\n';
     const body = events
       .map((l) =>
-        [l.id, l.timestamp, l.candidateId, byId(candidates, l.candidateId)?.name, l.type, l.event, byId(exams, l.examId)?.title || '', l.ip]
+        [l.id, l.timestamp, l.candidateId, candidateName(l), l.actor || (l.candidateId ? '' : 'System'), l.type, l.event, byId(exams, l.examId)?.title || '', l.ip]
           .map((v) => `"${String(v ?? '').replace(/"/g, '""')}"`)
           .join(',')
       )
@@ -126,7 +127,7 @@ export default function AuditLogs() {
               <thead>
                 <tr>
                   <th>Timestamp</th>
-                  <th>Candidate</th>
+                  <th>Candidate / By</th>
                   <th>Type</th>
                   <th>Event</th>
                   <th>Exam</th>
@@ -137,7 +138,7 @@ export default function AuditLogs() {
                 {events.map((l) => (
                   <tr key={l.id}>
                     <td className="small nowrap muted">{fmtDateTime(l.timestamp)}</td>
-                    <td><Person name={byId(candidates, l.candidateId)?.name || l.candidateId} sub={l.candidateId} /></td>
+                    <td><EventWho log={l} name={candidateName(l)} /></td>
                     <td><Badge>{l.type}</Badge></td>
                     <td>{l.event}</td>
                     <td className="small">{byId(exams, l.examId)?.title || <span className="muted">—</span>}</td>
@@ -152,5 +153,22 @@ export default function AuditLogs() {
         </div>
       </section>
     </>
+  );
+}
+
+/** Who an event is about: the candidate; for organization events, the staff member who did it, or the system. */
+function EventWho({ log, name }) {
+  if (log.candidateId) {
+    return <Person name={name} sub={log.actor ? `${log.candidateId} · by ${log.actor}` : log.candidateId} />;
+  }
+  const Icon = log.actor ? UserCog : Cpu;
+  return (
+    <div className="person">
+      <span className="avatar sm event-who"><Icon size={14} /></span>
+      <div>
+        <div className="strong">{log.actor || 'System'}</div>
+        <div className="muted small">{log.actor ? 'Staff action' : 'Automatic'}</div>
+      </div>
+    </div>
   );
 }

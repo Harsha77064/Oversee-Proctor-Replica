@@ -8,7 +8,7 @@ from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, PlainTextResponse, Response
 
-from .api import HttpError, api, error_reply
+from .api import HttpError, api, error_reply, update_exam_schedule
 from .auth import purge_expired_sessions
 from .config import config
 from .mailer import email_enabled
@@ -17,7 +17,7 @@ from .signaling import signal_endpoint
 
 CSP = ";".join([
     "default-src 'self'",
-    "script-src 'self'",
+    "script-src 'self' 'wasm-unsafe-eval'",  # WebAssembly for the in-browser face check
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com data:",
     "img-src 'self' data: blob: https:",
@@ -48,10 +48,12 @@ if config.production:
 
 
 async def _sweeper() -> None:
-    """Auto-submits timed-out exams and clears expired sessions every 30 seconds."""
+    """Every 30 seconds: start exams whose time has come, end exams whose time has run out,
+    auto-submit timed-out attempts and clear expired sessions."""
     while True:
         await asyncio.sleep(30)
         try:
+            update_exam_schedule()
             sweep_expired_attempts()
             purge_expired_sessions()
         except Exception as err:

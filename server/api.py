@@ -39,7 +39,7 @@ from .seed import seed_demo
 from .services import (
     attempt_questions, finish_attempt, finish_attempts_for_exam, flag_candidate, get_attempt_by_invite,
     list_audit, list_banks, list_candidates, list_exams, list_feedback, list_recordings, list_results,
-    start_attempt, touch_candidate,
+    end_finished_exams, start_attempt, start_due_exams, touch_candidate,
 )
 from .signaling import disconnect_invite, disconnect_user, is_candidate_online, notify_staff
 
@@ -244,6 +244,18 @@ def changed(*collections: str) -> None:
     notify_staff(list(collections))
 
 
+def update_exam_schedule() -> None:
+    """Opens scheduled exams whose start time has come and closes live exams whose time has run
+    out (submitting answers in progress). Runs on candidate/staff requests and every 30 s."""
+    started = start_due_exams()
+    ended = end_finished_exams(config.exam_end_grace_seconds)
+    for _exam_id, invite_ids in ended:
+        for invite_id in invite_ids:
+            disconnect_invite(invite_id, "Time is up. The exam has ended and your answers were submitted.")
+    if started or ended:
+        changed("exams", "results", "auditLogs", "candidates")
+
+
 def staff_expiry() -> datetime:
     return datetime.now(timezone.utc) + timedelta(hours=config.staff_session_hours)
 
@@ -395,6 +407,7 @@ async def change_password(request: Request):
 @route("/data", "GET")
 async def data(request: Request):
     user = any_staff(request)
+    update_exam_schedule()
     values = request.query_params.getlist("only")
     only = values[0].split(",") if len(values) == 1 and values[0] else None
     return reply(request, data_payload(only, user))
@@ -1038,6 +1051,7 @@ _cand_login_limit = Limiter(20, 15)
 @route("/candidate/lookup", "POST")
 async def candidate_lookup(request: Request):
     _lookup_limit.check(request)
+    update_exam_schedule()
     inv = invite_by_token(get(body_of(request), "token"))
     problem = invite_problem(inv)
     if problem:
@@ -1053,6 +1067,7 @@ async def candidate_lookup(request: Request):
 @route("/candidate/login", "POST")
 async def candidate_login(request: Request):
     _cand_login_limit.check(request)
+    update_exam_schedule()
     b = body_of(request)
     inv = invite_by_token(get(b, "token"))
     problem = invite_problem(inv)
@@ -1101,6 +1116,7 @@ async def candidate_signin(request: Request):
     Test IDs are random and unique (about 850 billion possibilities), attempts are limited per
     network address, and wrong guesses never lock anyone's invitation."""
     _signin_limit.check(request)
+    update_exam_schedule()
     b = body_of(request)
     test_id = norm_code(get(b, "testId") if get(b, "testId") is not UNDEFINED else get(b, "code"))
     if not test_id:
@@ -1130,7 +1146,8 @@ def candidate_state(ctx: dict) -> dict:
     base: dict[str, Any] = {
         "candidate": {"id": ctx["candidate_id"], "name": ctx["name"], "department": ctx["department"]},
         "exam": {"id": ctx["exam_id"], "title": ctx["exam_title"], "status": ctx["exam_status"], "duration": ctx["duration"], "questionCount": bank_size},
-        "rules": {"browserLockdown": truthy(settings["security"].get("browserLockdown"))},
+        "rules": {"browserLockdown": truthy(settings["security"].get("browserLockdown")),
+                  "faceDetection": truthy(settings["security"].get("faceDetection", True))},
         "organization": {"name": settings["organization"].get("name"), "logoUrl": settings["organization"].get("logoUrl")},
         "attempt": None,
     }
@@ -1159,6 +1176,7 @@ def expire_if_needed(ctx: dict) -> None:
 
 @route("/candidate/me", "GET")
 async def candidate_me(request: Request):
+    update_exam_schedule()
     ctx = require_candidate(request)
     expire_if_needed(ctx)
     return reply(request, candidate_state(ctx))
@@ -1166,6 +1184,7 @@ async def candidate_me(request: Request):
 
 @route("/candidate/start", "POST")
 async def candidate_start(request: Request):
+    update_exam_schedule()
     ctx = require_candidate(request)
     if ctx["exam_status"] != "Live":
         raise HttpError(409, "The exam has not started yet. This page updates when it does." if ctx["exam_status"] == "Scheduled" else "This exam has ended.")

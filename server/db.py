@@ -297,6 +297,7 @@ DEFAULT_SETTINGS: dict[str, dict[str, Any]] = {
         "screenRecording": True,
         "browserLockdown": True,
         "idVerification": True,
+        "faceDetection": True,
         "maxWarningsBeforeFlag": 3,
         "autoSubmitOnFlag": False,
     },

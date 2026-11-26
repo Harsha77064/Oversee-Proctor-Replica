@@ -80,6 +80,8 @@ class Config:
     staff_session_hours: float = _int("SESSION_HOURS", 12)
     invite_valid_days: float = _int("INVITE_VALID_DAYS", 14)
     max_recording_mb: int = _int("MAX_RECORDING_MB", 1024)
+    # Seconds after an exam's end time before it is closed automatically (lets last answers arrive).
+    exam_end_grace_seconds: int = _int("EXAM_END_GRACE_SECONDS", 30)
     smtp: Smtp = field(default_factory=Smtp)
     ice: Ice = field(default_factory=Ice)
 

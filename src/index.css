@@ -717,3 +717,5 @@ textarea.input { width: 100%; resize: vertical; }
 .signin-switch { margin-top: 16px; text-align: center; }
 .link-btn { font: inherit; background: none; border: 0; padding: 0; color: var(--brand); cursor: pointer; text-decoration: underline; }
 .invite-error { grid-column: 1 / -1; margin: 0; }
+
+.avatar.event-who { background: var(--surface-3); color: var(--text-2); }

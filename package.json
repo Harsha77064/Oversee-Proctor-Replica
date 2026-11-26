@@ -12,6 +12,7 @@
     "test": "python -m server.testing"
   },
   "dependencies": {
+    "@mediapipe/tasks-vision": "1.2.3",
     "lucide-react": "^0.460.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

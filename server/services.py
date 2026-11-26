@@ -201,6 +201,9 @@ def start_attempt(ctx: dict) -> dict:
             random.shuffle(order)
         started = datetime.now(timezone.utc)
         deadline = started + timedelta(minutes=ctx["duration"])
+        exam_end = exam_end_ms(db.one("SELECT start_time, duration FROM exams WHERE id = ?", ctx["exam_id"]))
+        if exam_end is not None:  # a late starter only gets the time left in the exam
+            deadline = min(deadline, datetime.fromtimestamp(exam_end / 1000, tz=timezone.utc))
         attempt_id = db.new_id("ATT")
         db.run(
             "INSERT INTO attempts (id, invite_id, exam_id, candidate_id, question_order, started_at, deadline) VALUES (?, ?, ?, ?, ?, ?, ?)",
@@ -276,6 +279,17 @@ def finish_attempt(attempt_id: str, *, status: str = "Submitted", reason: str | 
         return {"status": status, "correct": correct, "total": total, "score": score, "result": pass_fail}
 
 
+def start_due_exams() -> list[str]:
+    """Scheduled exams whose start time has arrived go Live automatically. Returns the exam ids started."""
+    started = []
+    for e in db.all_("SELECT id, title FROM exams WHERE status = 'Scheduled' AND start_time <= ?", db.now()):
+        with db.tx():
+            if db.run("UPDATE exams SET status = 'Live' WHERE id = ? AND status = 'Scheduled'", e["id"]):
+                db.audit(type="Normal", event=f'Exam "{e["title"]}" started automatically at its scheduled time', exam_id=e["id"])
+                started.append(e["id"])
+    return started
+
+
 def sweep_expired_attempts() -> None:
     """Auto-submits attempts whose time ran out (with a 30 s grace for slow connections)."""
     cutoff = iso(datetime.now(timezone.utc) - timedelta(seconds=30))
@@ -283,6 +297,35 @@ def sweep_expired_attempts() -> None:
         finish_attempt(a["id"], reason="time ran out")
 
 
-def finish_attempts_for_exam(exam_id: str) -> None:
+def finish_attempts_for_exam(exam_id: str, reason: str = "exam ended by admin") -> None:
     for a in db.all_("SELECT id FROM attempts WHERE status = 'InProgress' AND exam_id = ?", exam_id):
-        finish_attempt(a["id"], reason="exam ended by admin")
+        finish_attempt(a["id"], reason=reason)
+
+
+def exam_end_ms(exam: dict | None) -> float | None:
+    """When an exam's time runs out: its start time + duration (milliseconds), or None if unknown."""
+    if not exam:
+        return None
+    start = date_ms(exam["start_time"])
+    if start != start:  # NaN: unparsable start time
+        return None
+    return start + int(exam["duration"]) * 60000
+
+
+def end_finished_exams(grace_seconds: int = 30) -> list[tuple[str, list[str]]]:
+    """Live exams whose time (start + duration) has run out are completed automatically: answers
+    in progress are submitted and scored. Returns [(exam id, invite ids that were mid-exam)]."""
+    ended = []
+    now = now_ms()
+    for e in db.all_("SELECT id, title, start_time, duration FROM exams WHERE status = 'Live'"):
+        end = exam_end_ms(e)
+        if end is None or now < end + grace_seconds * 1000:
+            continue
+        open_invites = [a["invite_id"] for a in db.all_("SELECT invite_id FROM attempts WHERE exam_id = ? AND status = 'InProgress'", e["id"])]
+        with db.tx():
+            if not db.run("UPDATE exams SET status = 'Completed' WHERE id = ? AND status = 'Live'", e["id"]):
+                continue
+            finish_attempts_for_exam(e["id"], reason="exam time ended")
+            db.audit(type="Normal", event=f'Exam "{e["title"]}" ended automatically when its time ran out', exam_id=e["id"])
+        ended.append((e["id"], open_invites))
+    return ended

@@ -66,10 +66,10 @@ const AVATAR_COLORS = [
   ['#6366f1', '#8b5cf6'], ['#0ea5e9', '#6366f1'], ['#10b981', '#0ea5e9'], ['#f59e0b', '#ef4444'],
   ['#ec4899', '#8b5cf6'], ['#14b8a6', '#22c55e'], ['#f97316', '#ec4899'], ['#3b82f6', '#06b6d4'],
 ];
-export const initials = (name = '') => name.split(' ').map((p) => p[0]).slice(0, 2).join('').toUpperCase();
-export function avatarGradient(seed = '') {
+export const initials = (name) => String(name ?? '').trim().split(/\s+/).map((p) => p[0] || '').slice(0, 2).join('').toUpperCase();
+export function avatarGradient(seed) {
   let h = 0;
-  for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  for (const ch of String(seed ?? '')) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
   const [a, b] = AVATAR_COLORS[h % AVATAR_COLORS.length];
   return `linear-gradient(135deg, ${a}, ${b})`;
 }

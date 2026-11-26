@@ -4,7 +4,7 @@ The tests run in order and share state (one exam, one candidate) through `state`
 """
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from urllib.parse import parse_qs, urlsplit
 
 import pytest
@@ -53,7 +53,7 @@ def test_exam_invite_and_candidate_login(admin, cand):
     assert r.status_code == 201
     cid = state["cid"] = r.json()["id"]
     r = admin.post("/api/exams", json={"title": "API Test Exam", "bankId": "QB-101",
-                                       "startTime": datetime.now(timezone.utc).isoformat(), "duration": 30, "passMark": 50})
+                                       "startTime": (datetime.now(timezone.utc) + timedelta(hours=1)).isoformat(), "duration": 30, "passMark": 50})
     assert r.status_code == 201
     ex_id = state["exId"] = r.json()["id"]
     assert admin.post(f"/api/candidates/{cid}/assign", json={"examId": ex_id}).status_code == 200

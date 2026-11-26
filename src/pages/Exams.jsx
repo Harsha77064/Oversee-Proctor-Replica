@@ -173,7 +173,7 @@ function LiveExamCard({ exam, bank, candidates, onEnd, onInvite }) {
       <div className="row-between small muted">
         <span>{pct}% elapsed</span>
         <span className={remaining ? '' : 'text-red strong'}>
-          {remaining ? `${remaining} min remaining` : "Time's up — end the exam to publish results"}
+          {remaining ? `${remaining} min remaining · ends automatically` : "Time's up — ending automatically…"}
         </span>
       </div>
       <div className="live-stats">

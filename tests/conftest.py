@@ -25,7 +25,7 @@ def base_url():
     env = {
         **os.environ,
         "APP_ENV": "test", "PORT": str(port), "HOST": "127.0.0.1", "DATA_DIR": data_dir,
-        "SMTP_HOST": "", "TURN_URLS": "", "PUBLIC_URL": "",
+        "SMTP_HOST": "", "TURN_URLS": "", "PUBLIC_URL": "", "EXAM_END_GRACE_SECONDS": "1",
     }
     proc = subprocess.Popen([sys.executable, "-m", "server"], cwd=ROOT, env=env,
                             stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
