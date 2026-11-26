@@ -1,4 +1,4 @@
-"""Email settings (test outbox + real SMTP via a fake mail server) and candidate sign-in with email + access code."""
+"""Email settings (test outbox + real SMTP via a fake mail server) and candidate sign-in with just a Test ID."""
 from __future__ import annotations
 
 import base64
@@ -143,7 +143,7 @@ def test_invitation_emails_in_test_mode(admin):
     assert len(emails) == 1
     e = emails[0]
     assert e["to"] == "olive.outbox@example.com" and e["subject"] == "Your exam invitation: Exam for Olive Outbox"
-    assert inv["code"] in e["text"] and inv["link"] in e["text"] and "/exam and sign in with this email address" in e["text"]
+    assert f"Your Test ID: {inv['code']}" in e["text"] and inv["link"] in e["text"] and "/exam and enter your Test ID" in e["text"]
     status = next(i for i in admin.get(f"/api/exams/{ex}/invites").json()["invites"] if i["candidateId"] == cid)
     assert status["emailedAt"], "invite marked as emailed"
     assert admin.delete("/api/outbox").json()["deleted"] == 1
@@ -158,7 +158,7 @@ def test_email_off_hides_sending(admin):
 
 
 # ---------------------------------------------------------------- candidate sign-in with email + code
-def test_candidate_signin_with_email_and_code(base_url, admin):
+def test_candidate_signin_with_test_id_only(base_url, admin):
     portal = client(base_url).get("/api/candidate/portal").json()
     assert portal["organization"]["name"] == "Test Org"
 
@@ -166,18 +166,17 @@ def test_candidate_signin_with_email_and_code(base_url, admin):
     inv = admin.post(f"/api/exams/{ex}/invites", json={"candidateIds": [cid]}).json()["invites"][0]
     cand = client(base_url)
 
-    wrong = cand.post("/api/candidate/signin", json={"email": "sam.signin@example.com", "code": "AAAA-AAAA"})
-    unknown = cand.post("/api/candidate/signin", json={"email": "nobody@example.com", "code": inv["code"]})
-    assert wrong.status_code == unknown.status_code == 401
-    assert wrong.json()["error"] == unknown.json()["error"], "does not reveal which emails exist"
-    assert cand.post("/api/candidate/signin", json={"email": "sam.signin@example.com", "code": ""}).status_code == 400
+    r = cand.post("/api/candidate/signin", json={"testId": "AAAA-AAAA"})
+    assert r.status_code == 401 and "Test ID is not valid" in r.json()["error"]
+    assert cand.post("/api/candidate/signin", json={"testId": ""}).status_code == 400
     assert cand.get("/api/candidate/me").status_code == 401
 
-    # Wrong attempts on the sign-in page never lock the invitation.
+    # Wrong guesses never lock anyone's invitation.
     status = next(i for i in admin.get(f"/api/exams/{ex}/invites").json()["invites"] if i["candidateId"] == cid)["status"]
     assert status == "Pending"
 
-    r = cand.post("/api/candidate/signin", json={"email": "  SAM.Signin@Example.com ", "code": inv["code"].lower().replace("-", " ")})
+    # Just the Test ID (any case, with or without the dash) signs the right candidate into the right exam.
+    r = cand.post("/api/candidate/signin", json={"testId": inv["code"].lower().replace("-", " ")})
     assert r.status_code == 200, r.text
     me = cand.get("/api/candidate/me").json()
     assert me["candidate"]["id"] == cid and me["exam"]["title"] == "Exam for Sam Signin"
@@ -189,6 +188,12 @@ def test_candidate_signin_with_email_and_code(base_url, admin):
     assert other.post("/api/candidate/login", json={"token": token, "code": inv["code"]}).status_code == 200
     assert cand.get("/api/candidate/me").status_code == 401
 
-    events = [l["event"] for l in admin.get("/api/data", params={"only": "auditLogs"}).json()["auditLogs"] if l["candidateId"] == cid]
-    assert "Signed in with email and access code" in events
-    assert "Wrong email or access code on the candidate sign-in page" in events
+    logs = admin.get("/api/data", params={"only": "auditLogs"}).json()["auditLogs"]
+    assert "Signed in with Test ID" in [l["event"] for l in logs if l["candidateId"] == cid]
+    assert any(l["event"] == "Invalid Test ID entered on the candidate sign-in page" for l in logs)
+
+
+def test_each_test_id_is_unique(admin):
+    cid, ex = _candidate_with_live_exam(admin, "Uma Unique")
+    codes = {admin.post(f"/api/exams/{ex}/invites", json={"candidateIds": [cid]}).json()["invites"][0]["code"] for _ in range(5)}
+    assert len(codes) == 5, "every new invitation gets a different Test ID"

@@ -89,7 +89,7 @@ export default function EmailSettings() {
   return (
     <>
       <h2>Email</h2>
-      <p className="muted small" style={{ marginTop: -6 }}>How exam invitations reach candidates. Each email contains the candidate's personal exam link and access code.</p>
+      <p className="muted small" style={{ marginTop: -6 }}>How exam invitations reach candidates. Each email contains the candidate's personal Test ID and exam link.</p>
 
       {fromEnv && (
         <div className="info-box small"><Lock size={16} /> Email is configured in the server's <code>.env</code> file (SMTP_HOST={saved.host}). Change it there, or remove those lines to manage email here.</div>

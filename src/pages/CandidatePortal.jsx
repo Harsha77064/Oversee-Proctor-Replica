@@ -1,6 +1,6 @@
 // Candidate-facing exam portal: /exam?t=<invite token> (link from the invitation), or
-// /exam on its own, where candidates sign in with their email address + access code.
-// The candidate signs in with the access code from their invitation, passes a
+// /exam on its own, where candidates sign in with just their Test ID.
+// The candidate signs in with the Test ID from their invitation, passes a
 // camera/microphone/connection check, then takes the exam while their camera
 // and microphone stream to the proctor. Answers are saved to the server as they
 // go; the server keeps the clock and scores the exam.
@@ -178,15 +178,15 @@ export default function CandidatePortal() {
         {phase === 'invalid' && (
           <Finished icon={Link2Off} tone="red" title="This exam link cannot be used" text={fatal} cameraNote={false}>
             <button className="btn" onClick={() => { api('/candidate/portal').then(setPortal, () => {}); setPhase('signin'); }}>
-              <LogIn size={15} /> Sign in with email and access code instead
+              <LogIn size={15} /> Sign in with your Test ID instead
             </button>
           </Finished>
         )}
         {phase === 'signin' && (
           <SignIn
             org={portal?.organization}
-            onSubmit={async (email, code) => {
-              await api('/candidate/signin', { method: 'POST', body: { email, code }, quiet401: true });
+            onSubmit={async (testId) => {
+              await api('/candidate/signin', { method: 'POST', body: { testId }, quiet401: true });
               applyMe(await api('/candidate/me'));
             }}
           />
@@ -293,22 +293,21 @@ export default function CandidatePortal() {
 
 // ---------------------------------------------------------------------------
 function SignIn({ org, onSubmit }) {
-  const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   return (
     <div className="portal-card narrow">
       <div className="big-icon badge-purple"><LogIn size={28} /></div>
-      <h1 style={{ marginTop: 14 }}>Sign in to your exam</h1>
-      <p className="muted">Use the email address your invitation was sent to and the access code from that email.</p>
+      <h1 style={{ marginTop: 14 }}>Enter your Test ID</h1>
+      <p className="muted">Your Test ID is in your exam invitation. It looks like ABCD-1234.</p>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
           setBusy(true);
           setError('');
           try {
-            await onSubmit(email.trim(), code);
+            await onSubmit(code);
           } catch (err) {
             setError(err.message);
             setBusy(false);
@@ -316,13 +315,10 @@ function SignIn({ org, onSubmit }) {
         }}
       >
         <label className="field">
-          <span>Email address</span>
-          <input id="cand-email" className="input" type="email" autoComplete="email" required autoFocus value={email} onChange={(e) => setEmail(e.target.value)} />
-        </label>
-        <label className="field">
-          <span>Access code</span>
+          <span>Test ID</span>
           <input
             id="cand-code"
+            autoFocus
             className="input code-input"
             placeholder="ABCD-1234"
             autoComplete="one-time-code"
@@ -335,12 +331,12 @@ function SignIn({ org, onSubmit }) {
           />
         </label>
         <FormError>{error}</FormError>
-        <button className="btn primary block" disabled={busy || !email.trim() || code.replace(/[^A-Z0-9]/gi, '').length < 8}>
+        <button className="btn primary block" disabled={busy || code.replace(/[^A-Z0-9]/gi, '').length < 8}>
           {busy ? <Loader2 size={16} className="spin" /> : null} Continue <ArrowRight size={16} />
         </button>
       </form>
       <p className="muted small" style={{ marginTop: 16 }}>
-        You can also open the exam link in your invitation email. This exam is live proctored: your camera and microphone
+        You can also open the exam link in your invitation. This exam is live proctored: your camera and microphone
         will be monitored and may be recorded.
         {org?.supportEmail && <> Need help? Contact {org.supportEmail}.</>}
       </p>
@@ -356,9 +352,9 @@ function CodeEntry({ invite, onSubmit }) {
   return (
     <div className="portal-card narrow">
       <div className="big-icon badge-purple"><KeyRound size={28} /></div>
-      <h1 style={{ marginTop: 14 }}>Hi {invite.candidate.firstName}, enter your access code</h1>
+      <h1 style={{ marginTop: 14 }}>Hi {invite.candidate.firstName}, enter your Test ID</h1>
       <p className="muted">
-        <b style={{ color: 'var(--text)' }}>{invite.exam.title}</b> · {invite.exam.duration} minutes. The code is in your invitation email.
+        <b style={{ color: 'var(--text)' }}>{invite.exam.title}</b> · {invite.exam.duration} minutes. The Test ID is in your invitation.
       </p>
       <form
         onSubmit={async (e) => {
@@ -374,7 +370,7 @@ function CodeEntry({ invite, onSubmit }) {
         }}
       >
         <label className="field">
-          <span>Access code</span>
+          <span>Test ID</span>
           <input
             id="access-code"
             className="input code-input"

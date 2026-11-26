@@ -40,7 +40,7 @@ stored in `./data` (database and recordings).
 
 **Try a proctored exam on one computer**
 1. Exams → Live tab (or Start Now on a scheduled exam) → **Invitations** → tick a candidate → **Create links**.
-2. Open the link in a different browser (or a private window) and enter the access code.
+2. In a different browser (or a private window) open `/exam` and enter the candidate's Test ID (or open their link).
 3. Allow the camera, start the exam, and watch it under **Live Monitoring**.
 
 **Other devices on your network:** browsers only allow cameras on `https://` or
@@ -63,7 +63,7 @@ Configuration is via environment variables; see [.env.example](.env.example).
 |---|---|
 | **Admin** | Everything: candidates, question banks, exams, invitations, settings, users |
 | **Proctor** | Monitor live exams, record, warn, flag, terminate, send feedback; read-only elsewhere; never sees answer keys |
-| **Candidate** | Signs in with a personal invitation link + access code; takes only their assigned exam |
+| **Candidate** | Signs in at `/exam` with their personal Test ID (or the invitation link + Test ID); takes only their assigned exam |
 
 ## Sections
 
@@ -71,11 +71,11 @@ Configuration is via environment variables; see [.env.example](.env.example).
 |---|---|
 | **Dashboard** | Candidate stats (total, active, inactive, online), live and completed exams, average / highest / lowest score, warnings, cheating flags; candidate table with user ID, department, status and **Assign Exam**. |
 | **Question Bank** | Create banks and multiple-choice questions with difficulty. Demo banks: React JS, Selenium, Python, Java OOPs, JavaScript, SQL, DevOps. |
-| **Exams** | Scheduled / Live / Completed. Schedule, start, end, delete; **Invitations** creates personal links + access codes and can email them. |
+| **Exams** | Scheduled / Live / Completed. Schedule, start, end, delete; **Invitations** creates a personal Test ID (and link) per candidate and can email them. |
 | **Results** | Server-scored results with Pass / Fail, pass rate and filters. |
 | **Feedback** | Organization → candidate feedback with a rating. |
 | **Live Monitoring** | Real-time camera + microphone of every candidate. Record (saved on the server), snapshot, listen, message, warn, flag, terminate. Integrity alerts arrive live. |
-| **Candidate portal** (`/exam`) | Candidates open the link from their invitation, or go to `/exam` and sign in with their email + access code. Then a camera/microphone/connection check, consent, full-screen timed exam. Answers save as they go and survive a reload. Tab switches, focus loss, leaving full screen, copy/paste, blocked shortcuts and a covered or disconnected camera are reported and logged. |
+| **Candidate portal** (`/exam`) | Candidates go to `/exam` and enter their Test ID (or open the link from their invitation). Then a camera/microphone/connection check, consent, full-screen timed exam. Answers save as they go and survive a reload. Tab switches, focus loss, leaving full screen, copy/paste, blocked shortcuts and a covered or disconnected camera are reported and logged. |
 | **Audit Logs** | Per-candidate summary and full event log (who did what, when, from which IP), CSV export. |
 | **Reports** | Charts and CSV exports. |
 | **Settings** | Organization (company URL, logo URL, support email), exam defaults, security, notifications, and **Email** (how invitations are sent: off, test mode with an in-app outbox, or real SMTP such as Gmail/Outlook, with a "Send test email" button). |
@@ -119,12 +119,12 @@ Set this up under **Settings → Email** (admins only):
   normal password. The password is stored on the server and never shown again.
 
 Then in **Exams → Invitations**, tick candidates and click **Create and email** (or *Create and save to
-outbox* in test mode). Each email contains the candidate's personal link and access code, plus the
+outbox* in test mode). Each email contains the candidate's personal Test ID and link, plus the
 sign-in address below. `SMTP_*` settings in `.env`, if present, take priority over the page.
 
-**Candidates** can open the link in the email, or go to **`/exam`** (e.g. `https://exams.example.com/exam`)
-and sign in with their email address and access code. Wrong attempts there are rate-limited and logged,
-but never lock the invitation.
+**Candidates** go to **`/exam`** (e.g. `https://exams.example.com/exam`) and enter their **Test ID**
+(or open the link in the email). Test IDs are random and unique, wrong attempts are rate-limited and
+logged, and they never lock anyone's invitation.
 
 ## Checking a running server
 

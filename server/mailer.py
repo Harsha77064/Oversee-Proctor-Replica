@@ -199,13 +199,13 @@ async def send_invite_email(*, to: str, name: str, exam_title: str, start_time: 
         f'You have been invited to take "{exam_title}" with {org_name}.',
         f"Scheduled: {when} · Duration: {duration} minutes",
         "",
-        f"Exam link: {link}",
-        f"Access code: {code}",
+        f"Your Test ID: {code}",
         "",
-        f"No link? Go to {signin_url} and sign in with this email address ({to}) and your access code.",
+        f"To start, go to {signin_url} and enter your Test ID.",
+        f"(Or open your personal exam link: {link})",
         "",
         "The exam is live proctored: you will need a working webcam and microphone, and you must stay in full screen.",
-        "Keep this code private. It can only be used by you.",
+        "Keep your Test ID private. It can only be used by you.",
         f"Questions? Contact {support_email}." if support_email else "",
     ])
     support = f'<p style="color:#4b5563;font-size:13px">Questions? Contact {_esc(support_email)}.</p>' if support_email else ""
@@ -214,10 +214,10 @@ async def send_invite_email(*, to: str, name: str, exam_title: str, start_time: 
     <p>Hello {_esc(name)},</p>
     <p>You have been invited to take <b>{_esc(exam_title)}</b> with {_esc(org_name)}.</p>
     <p style="color:#4b5563">Scheduled: {_esc(when)} · Duration: {_esc(duration)} minutes</p>
+    <p>Your Test ID: <b style="font-size:22px;letter-spacing:3px">{_esc(code)}</b></p>
     <p><a href="{_esc(link)}" style="display:inline-block;background:#5b5bf0;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:bold">Open your exam</a></p>
-    <p>Access code: <b style="font-size:20px;letter-spacing:3px">{_esc(code)}</b></p>
-    <p style="color:#4b5563;font-size:13px">No link? Go to <a href="{_esc(signin_url)}">{_esc(signin_url)}</a> and sign in with this email address and your access code.</p>
-    <p style="color:#4b5563;font-size:13px">This exam is live proctored. You will need a working webcam and microphone and must stay in full screen. Keep this code private.</p>
+    <p style="color:#4b5563;font-size:13px">Or go to <a href="{_esc(signin_url)}">{_esc(signin_url)}</a> and enter your Test ID.</p>
+    <p style="color:#4b5563;font-size:13px">This exam is live proctored. You will need a working webcam and microphone and must stay in full screen. Keep your Test ID private.</p>
     {support}
   </div>"""
     return await send_email(to=to, subject=f"Your exam invitation: {exam_title}", text=text, html_body=body)

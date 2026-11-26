@@ -597,8 +597,12 @@ CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"
 
 
 def new_code() -> str:
-    s = "".join(secrets.choice(CODE_ALPHABET) for _ in range(8))
-    return f"{s[:4]}-{s[4:]}"
+    """A new Test ID such as M8NJ-ZPCV. Unique across all invitations, because candidates
+    sign in with the Test ID alone (31^8, about 850 billion possibilities)."""
+    while True:
+        s = "".join(secrets.choice(CODE_ALPHABET) for _ in range(8))
+        if not db.one("SELECT 1 FROM invites WHERE code_hash = ?", db.sha256(s)):
+            return f"{s[:4]}-{s[4:]}"
 
 
 def norm_code(c: Any) -> str:
@@ -1013,7 +1017,7 @@ def invite_problem(inv: dict | None) -> str | None:
     if inv["status"] == "Revoked":
         return "This invitation has been withdrawn. Contact your organization for a new link."
     if inv["status"] == "Locked":
-        return "This invitation is locked after too many wrong access codes. Contact your organization for a new link."
+        return "This invitation is locked after too many wrong Test IDs. Contact your organization for a new one."
     if inv["status"] == "Submitted":
         return "You have already submitted this exam."
     if inv["status"] == "Terminated":
@@ -1059,13 +1063,13 @@ async def candidate_login(request: Request):
         db.run("UPDATE invites SET failed_attempts = ?, status = CASE WHEN ? >= 5 THEN 'Locked' ELSE status END WHERE id = ?",
                fails, fails, inv["id"])
         db.audit(candidate_id=inv["candidate_id"], type="Warning",
-                 event="Invitation locked after 5 wrong access codes" if fails >= 5 else "Wrong exam access code entered",
+                 event="Invitation locked after 5 wrong Test IDs" if fails >= 5 else "Wrong Test ID entered on the exam link",
                  exam_id=inv["exam_id"], ip=ip_of(request))
         changed("auditLogs")
-        message = ("Too many wrong codes. This invitation is now locked; contact your organization." if fails >= 5
-                   else f"That access code is not correct. {5 - fails} tries left.")
+        message = ("Too many wrong attempts. This invitation is now locked; contact your organization." if fails >= 5
+                   else f"That Test ID is not correct. {5 - fails} tries left.")
         return reply(request, {"error": message}, 401)
-    return _begin_candidate_session(request, inv, "Signed in with exam access code")
+    return _begin_candidate_session(request, inv, "Signed in with exam link and Test ID")
 
 
 def _begin_candidate_session(request: Request, inv: dict, how: str) -> Response:
@@ -1080,9 +1084,7 @@ def _begin_candidate_session(request: Request, inv: dict, how: str) -> Response:
     return reply(request, {"ok": True})
 
 
-_signin_limit = Limiter(10, 15)
-_signin_fails: dict[str, tuple[int, float]] = {}  # email -> (failures, window end)
-SIGNIN_MAX_FAILS = 10
+_signin_limit = Limiter(10, 15)  # Test ID attempts per network address
 
 
 @route("/candidate/portal", "GET")
@@ -1094,47 +1096,31 @@ async def candidate_portal(request: Request):
 
 @route("/candidate/signin", "POST")
 async def candidate_signin(request: Request):
-    """Sign in without the link: email address + the access code from the invitation.
+    """Sign in with the Test ID alone (the personal code from the invitation).
 
-    Wrong codes never lock the invitation (anyone may know a candidate's email); instead
-    attempts are limited per IP and per email address, and the 8-character code is not guessable."""
+    Test IDs are random and unique (about 850 billion possibilities), attempts are limited per
+    network address, and wrong guesses never lock anyone's invitation."""
     _signin_limit.check(request)
     b = body_of(request)
-    mail = str_(get(b, "email"), "Email", max=254).lower()
-    code = norm_code(get(b, "code"))
-    if not code:
-        raise bad("Access code is required.")
-    now = time.time()
-    fails, until = _signin_fails.get(mail, (0, 0.0))
-    if now >= until:
-        fails, until = 0, now + 15 * 60
-    if fails >= SIGNIN_MAX_FAILS:
-        raise HttpError(429, "Too many wrong attempts for this email. Wait 15 minutes, or open the link in your invitation email.")
-
-    candidates = [r["id"] for r in db.all_("SELECT id FROM candidates WHERE email = ? COLLATE NOCASE", mail)]
+    test_id = norm_code(get(b, "testId") if get(b, "testId") is not UNDEFINED else get(b, "code"))
+    if not test_id:
+        raise bad("Enter your Test ID.")
     inv = None
-    if candidates and len(code) == 8:
-        marks = ",".join("?" for _ in candidates)
+    if len(test_id) == 8:
         inv = db.one(
-            f"""SELECT i.*, c.name, c.status AS candidate_status, e.title, e.duration, e.status AS exam_status, e.start_time
-                FROM invites i JOIN candidates c ON c.id = i.candidate_id JOIN exams e ON e.id = i.exam_id
-                WHERE i.candidate_id IN ({marks}) AND i.code_hash = ? ORDER BY i.created_at DESC LIMIT 1""",
-            *candidates, db.sha256(code),
+            """SELECT i.*, c.name, c.status AS candidate_status, e.title, e.duration, e.status AS exam_status, e.start_time
+               FROM invites i JOIN candidates c ON c.id = i.candidate_id JOIN exams e ON e.id = i.exam_id
+               WHERE i.code_hash = ? ORDER BY i.created_at DESC LIMIT 1""",
+            db.sha256(test_id),
         )
     if not inv:
-        _signin_fails[mail] = (fails + 1, until)
-        if len(_signin_fails) > 10000:
-            _signin_fails.clear()
-        for cid in candidates:
-            db.audit(candidate_id=cid, type="Warning", event="Wrong email or access code on the candidate sign-in page", ip=ip_of(request))
-        if candidates:
-            changed("auditLogs")
-        raise HttpError(401, "Email or access code is incorrect. Check the code in your invitation email.")
+        db.audit(type="Warning", event="Invalid Test ID entered on the candidate sign-in page", ip=ip_of(request))
+        changed("auditLogs")
+        raise HttpError(401, "That Test ID is not valid. Check the Test ID in your invitation and try again.")
     problem = invite_problem(inv)
     if problem:
         return reply(request, {"error": problem}, 409)
-    _signin_fails.pop(mail, None)
-    return _begin_candidate_session(request, inv, "Signed in with email and access code")
+    return _begin_candidate_session(request, inv, "Signed in with Test ID")
 
 
 def candidate_state(ctx: dict) -> dict:

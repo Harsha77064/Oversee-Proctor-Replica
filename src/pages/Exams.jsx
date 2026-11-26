@@ -309,7 +309,7 @@ function InviteModal({ exam, onClose }) {
   };
   const toggle = (id) => setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
   const signinUrl = (i) => { try { return `${new URL(i.link).origin}/exam`; } catch { return '/exam'; } };
-  const fmt = (i) => `${i.name} <${i.email}>\nExam: ${exam.title}\nLink: ${i.link}\nAccess code: ${i.code}\nNo link? Sign in at ${signinUrl(i)} with ${i.email} and the access code.`;
+  const fmt = (i) => `${i.name} <${i.email}>\nExam: ${exam.title}\nLink: ${i.link}\nTest ID: ${i.code}\nStart at ${signinUrl(i)} and enter the Test ID (or open the link).`;
 
   return (
     <Modal title={`Invitations · ${exam.title}`} onClose={onClose} wide>
@@ -318,7 +318,7 @@ function InviteModal({ exam, onClose }) {
           <div className="info-box small" style={{ alignItems: 'flex-start' }}>
             <Link2 size={16} />
             <div>
-              <b>Each candidate has a personal link and access code.</b> Codes are shown only now; if one is lost, create a new
+              <b>Each candidate has a personal Test ID (and link).</b> Test IDs are shown only now; if one is lost, create a new
               invitation (the old link stops working). Send the code separately from the link where you can.
             </div>
           </div>
@@ -363,7 +363,7 @@ function InviteModal({ exam, onClose }) {
       ) : (
         <>
           <p className="muted small" style={{ marginTop: 0 }}>
-            Candidates assigned to this exam. Choose who to invite; each gets a personal exam link and an access code that only works for them.
+            Candidates assigned to this exam. Choose who to invite; each gets a personal Test ID (and exam link) that only works for them. They enter it at the /exam page.
           </p>
           <FormError>{error}</FormError>
           {!data ? (
